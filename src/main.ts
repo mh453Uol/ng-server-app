@@ -8,5 +8,6 @@ if (environment.production) {
   enableProdMode();
 }
 
+// App component is the root node in the tree
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.log(err));
