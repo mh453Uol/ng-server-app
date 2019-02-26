@@ -13,6 +13,7 @@ import { Server } from 'src/app/server/server.model';
 export class ServerComponent implements OnInit {
   @Input() server: Server = null;
   @Output() removeServer = new EventEmitter();
+  @Output() updateField = new EventEmitter();
 
   constructor() {}
 
@@ -24,5 +25,11 @@ export class ServerComponent implements OnInit {
 
   onRemoveServer() {
     this.removeServer.emit(this.server);
+  }
+
+  onUpdateField(key, event: Event) {
+    const value = (event.target as HTMLInputElement).value;
+    this.server[key] = value;
+    // this.updateField.emit({ key: key, value: value });
   }
 }

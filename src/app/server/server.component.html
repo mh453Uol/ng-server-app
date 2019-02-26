@@ -1,12 +1,23 @@
 <div class="row">
   <div class="col">
-    <input type="text" class="form-control" placeholder="Server Name" />
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Server Name"
+      [(ngModel)]="server.name" />
+      <!-- 2 way binding, update automatically -->
   </div>
   <div class="col">
-    <input (click)="onHelloWorld()" type="password" class="form-control" placeholder="Server IP" />
+    <input
+      (click)="onHelloWorld()"
+      type="password"
+      class="form-control"
+      placeholder="Server IP"
+      (input)="onUpdateField('ip',$event)" />
   </div>
   <button type="button" (click)="onRemoveServer()" class="btn btn-primary">Remove</button>
 </div>
+{{server|json}}
 
 <!-- <label>Name: </label><input type="text">
 <label>Ip: </label><input type="text">
