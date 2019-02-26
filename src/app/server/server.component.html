@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" [ngClass]="{online: server.status === status.Online}">
   <div class="col">
     <input
       type="text"
@@ -9,16 +9,18 @@
   </div>
   <div class="col">
     <input
-      (click)="onHelloWorld()"
-      type="password"
+      type="text"
       class="form-control"
       placeholder="Server IP"
       (input)="onUpdateField('ip',$event)" />
+  </div>
+  <div class="col">
+      <select [(ngModel)]="server.status" class="form-control">
+        <option [ngValue]="status.Offline">Offline</option>
+        <option [ngValue]="status.Online">Online</option>
+      </select>
   </div>
   <button type="button" (click)="onRemoveServer()" class="btn btn-primary">Remove</button>
 </div>
 {{server|json}}
 
-<!-- <label>Name: </label><input type="text">
-<label>Ip: </label><input type="text">
-<label>Status: </label><input type="text"> -->

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Server } from 'src/app/server/server.model';
+import { Server, Status } from 'src/app/server/server.model';
 
 // @xyz is a decorator
 @Component({
@@ -11,6 +11,7 @@ import { Server } from 'src/app/server/server.model';
   styleUrls: ['./server.component.css']
 })
 export class ServerComponent implements OnInit {
+  public status = Status;
   @Input() server: Server = null;
   @Output() removeServer = new EventEmitter();
   @Output() updateField = new EventEmitter();

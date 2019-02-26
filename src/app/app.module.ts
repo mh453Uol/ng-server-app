@@ -1,3 +1,4 @@
+import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -5,13 +6,27 @@ import { AppComponent } from './app.component';
 import { ServerComponent } from './server/server.component';
 import { ServersComponent } from './servers/servers.component';
 import {FormsModule} from '@angular/forms';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { HeaderComponent } from './header/header.component';
+import { RecipesComponent } from './recipes/recipes.component';
+import {ShoppingListEditComponent} from './shopping-list/shopping-list-edit/shopping-list-edit.component';
+import {RecipeListComponent} from './recipes/recipe-list/recipe-list.component';
+import {RecipeItemComponent} from './recipes/recipe-list/recipe-item/recipe-item.component';
 // module bundle components, services into one place
 @NgModule({
   // my components I have created
   declarations: [
     AppComponent,
     ServerComponent,
-    ServersComponent
+    ServersComponent,
+    ShoppingListComponent,
+    RecipesComponent,
+    ShoppingListEditComponent,
+    RecipeListComponent,
+    RecipeItemComponent,
+    RecipeDetailComponent,
+    HeaderComponent,
+    RecipesComponent
   ],
   // add modules to this modules (access functionality)
   imports: [

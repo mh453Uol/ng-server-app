@@ -1,10 +1,12 @@
 export enum Status {
-  Online,
-  Offline
+  Offline,
+  Online
 }
 
 export class Server {
-  constructor() {}
+  constructor() {
+    this.status = Status.Offline;
+  }
   // constructor(id: number, name: string, status: Status) {
   //   this.id = id;
   //   this.name = name;

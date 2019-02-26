@@ -3,7 +3,17 @@
   Add Server
 </button>
 
-<div *ngFor="let server of servers" class="servers-container">
-  <app-server [server]=" server" (removeServer)="onRemoveServer($event)">
-  </app-server>
+<div class="servers-container">
+  <p *ngIf="servers.length == 0; else hasServers">
+    No servers created.
+  </p>
+  <div *ngFor="let server of servers; let i = index">
+    current index {{i}}
+    <app-server [server]=" server" (removeServer)="onRemoveServer($event)">
+    </app-server>
+  </div>
 </div>
+
+<ng-template #hasServers>
+  <p>{{servers.length}} servers</p>
+</ng-template>
