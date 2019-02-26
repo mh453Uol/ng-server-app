@@ -1,5 +1,13 @@
-<ul [hidden]="!server">
-  <li>{{server.id}} - {{server.name}}</li>
-  <li>{{server.ip}}</li>
-  <li>{{server.status}}</li>
-</ul>
+<div class="row">
+  <div class="col">
+    <input type="text" class="form-control" placeholder="Server Name" />
+  </div>
+  <div class="col">
+    <input (click)="onHelloWorld()" type="password" class="form-control" placeholder="Server IP" />
+  </div>
+  <button type="button" (click)="onRemoveServer()" class="btn btn-primary">Remove</button>
+</div>
+
+<!-- <label>Name: </label><input type="text">
+<label>Ip: </label><input type="text">
+<label>Status: </label><input type="text"> -->

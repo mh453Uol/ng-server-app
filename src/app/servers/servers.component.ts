@@ -7,13 +7,26 @@ import { Server, Status } from 'src/app/server/server.model';
   styleUrls: ['./servers.component.css']
 })
 export class ServersComponent implements OnInit {
+  allowAddNewServer = false;
   servers: Server[] = [];
 
   constructor() {
-    this.servers.push(new Server(1, 'Dev Machine', Status.Online));
-    this.servers.push(new Server(2, 'Prod Machine', Status.Offline));
-    this.servers.push(new Server(3, 'Staging Machine', Status.Offline));
+    // after 2000 ms (2 secs) toggle button
+    setTimeout(() => {
+      this.allowAddNewServer = true;
+    }, 1);
   }
 
+  onAddButtonClick() {
+    this.servers.push(new Server());
+  }
+
+  onRemoveServer(server: Server) {
+    const index = this.servers.findIndex(s => s === server);
+
+    if (index !== -1) {
+      this.servers.splice(index, 1);
+    }
+  }
   ngOnInit() {}
 }
