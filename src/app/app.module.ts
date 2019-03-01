@@ -12,6 +12,7 @@ import { RecipesComponent } from './recipes/recipes.component';
 import {ShoppingListEditComponent} from './shopping-list/shopping-list-edit/shopping-list-edit.component';
 import {RecipeListComponent} from './recipes/recipe-list/recipe-list.component';
 import {RecipeItemComponent} from './recipes/recipe-list/recipe-item/recipe-item.component';
+import { TreeComponent } from './tree/tree.component';
 // module bundle components, services into one place
 @NgModule({
   // my components I have created
@@ -26,7 +27,8 @@ import {RecipeItemComponent} from './recipes/recipe-list/recipe-item/recipe-item
     RecipeItemComponent,
     RecipeDetailComponent,
     HeaderComponent,
-    RecipesComponent
+    RecipesComponent,
+    TreeComponent
   ],
   // add modules to this modules (access functionality)
   imports: [
