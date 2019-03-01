@@ -1,10 +1,12 @@
-<div class="row" [ngClass]="{online: server.status === status.Online}">
+<div class="row">
   <div class="col">
     <input
       type="text"
       class="form-control"
       placeholder="Server Name"
-      [(ngModel)]="server.name" />
+      [value]="server.name" 
+      readonly
+      />
       <!-- 2 way binding, update automatically -->
   </div>
   <div class="col">
@@ -12,15 +14,12 @@
       type="text"
       class="form-control"
       placeholder="Server IP"
-      (input)="onUpdateField('ip',$event)" />
+      [value]="server.ip"
+      readonly />
   </div>
-  <div class="col">
-      <select [(ngModel)]="server.status" class="form-control">
-        <option [ngValue]="status.Offline">Offline</option>
-        <option [ngValue]="status.Online">Online</option>
-      </select>
-  </div>
-  <button type="button" (click)="onRemoveServer()" class="btn btn-primary">Remove</button>
+  {{server.type}}
+  {{server.status}}
+  <button type="button" (click)="onEdit()" class="btn btn-primary">Edit</button>
 </div>
 {{server|json}}
 
