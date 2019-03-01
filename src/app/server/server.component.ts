@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, DoCheck, OnChanges, SimpleChanges} from '@angular/core';
 import {Server, Status} from 'src/app/server/server.model';
 
 // @xyz is a decorator
@@ -10,15 +10,31 @@ import {Server, Status} from 'src/app/server/server.model';
   templateUrl: './server.component.html',
   styleUrls: ['./server.component.css']
 })
-export class ServerComponent implements OnInit {
+export class ServerComponent implements OnInit, OnChanges {
   @Input() server: Server;
   @Output() edit = new EventEmitter();
 
-  constructor() {}
+  @Input() num = 0;
 
-  ngOnInit() {}
+  constructor() {
+    console.log('constructor called');
+  }
+
+  ngOnInit() {
+    console.log('ngOnInit called');
+  }
 
   onEdit() {
     this.edit.emit(this.server);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    // Add '${implements OnChanges}' to the class.
+    console.log(changes);
+  }
+
+  onRandom() {
+    this.num = this.num + 1;
   }
 }
