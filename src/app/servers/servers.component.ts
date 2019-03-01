@@ -1,5 +1,6 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, AfterViewInit, ViewChildren, QueryList} from '@angular/core';
 import {Server, Status, ServerType} from 'src/app/server/server.model';
+import {ServerComponent} from '../server/server.component';
 
 @Component({
   selector: 'app-servers',
@@ -9,7 +10,8 @@ import {Server, Status, ServerType} from 'src/app/server/server.model';
   // encapsulation: ViewEncapsulation.Emulated (default adds ng-content-xyz)
   // encapsulation: ViewEncapsulation.ShadowDom (not supported by all browsers)
 })
-export class ServersComponent implements OnInit {
+export class ServersComponent implements OnInit, AfterViewInit {
+
   allowAddNewServer = false;
   currentServer: Server;
   servers: Server[] = [];
@@ -17,6 +19,17 @@ export class ServersComponent implements OnInit {
 
   status = Status;
   serverType = ServerType;
+
+  @ViewChildren(ServerComponent) serversCompoenents: QueryList<ServerComponent>;
+
+  ngAfterViewInit(): void {
+    this.serversCompoenents.changes.subscribe(s => {
+      this.serversCompoenents.map(s => {
+        s.edit.subscribe(complete => {
+        });
+      });
+    });
+  }
 
   constructor() {
     // after 2000 ms (2 secs) toggle button
@@ -36,6 +49,7 @@ export class ServersComponent implements OnInit {
   onAddButtonClick() {
     this.servers.push(this.currentServer);
     this.currentServer = new Server();
+    console.log(this.serversCompoenents);
   }
 
   onEditServer(server: Server) {
