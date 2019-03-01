@@ -1,5 +1,5 @@
 <!-- <div app-server name='dev-majid' ip='192.1.1.1'></div> -->
-<div class="row" #form>
+<div class="row">
   <div class="col">
     <input type="text" class="form-control" placeholder="Server Name" [(ngModel)]="currentServer.name" />
     <!-- 2 way binding, update automatically -->
@@ -43,3 +43,17 @@
 <ng-template #hasServers>
   <p>{{servers.length}} servers</p>
 </ng-template>
+
+<app-panel>
+  <div class="header">
+    <h1>Header goes here</h1>
+  </div>
+  <div class="body">
+    <h3 *ngIf="servers.length > 1">
+      more than 1
+    </h3>
+  </div>
+  <div class="footer">
+    <p>Footer goes here!</p>
+  </div>
+</app-panel>
