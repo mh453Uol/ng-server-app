@@ -1,4 +1,4 @@
-import { PanelComponent } from './panel/panel.component';
+import {PanelComponent} from './panel/panel.component';
 import {
   Component,
   ContentChild,
@@ -13,6 +13,7 @@ import {
 })
 export class AppComponent implements AfterContentInit {
   title = 'app';
+  view = 'recipes';
 
   @ContentChild('panel') panel: ElementRef;
 
@@ -22,5 +23,9 @@ export class AppComponent implements AfterContentInit {
 
   onClick() {
     console.log(this.panel);
+  }
+
+  onViewChanged(event: {page: string}) {
+    this.view = event.page;
   }
 }
