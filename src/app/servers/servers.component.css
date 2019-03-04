@@ -1,3 +1,15 @@
 .servers-container {
   padding-top: 20px;
 }
+
+/* <server></server> component also uses this class, however when we use :host it only applys the style to <servers> only */
+
+/* :host .btn-primary {
+  background-color: red !important;
+} */
+
+/* all child components add this style to i.e add style to server component */
+
+/* :host ::ng-deep input {
+  border: 10px solid pink;
+} */

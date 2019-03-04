@@ -2,8 +2,19 @@
 
 <app-header></app-header>
 <div class="container">
-  <app-recipes></app-recipes>
-  <app-shopping-list></app-shopping-list>
 
-  <!-- <app-tree></app-tree> -->
+  <!--
+    <app-recipes></app-recipes>
+    <app-shopping-list></app-shopping-list>
+  -->
+
+  <app-servers></app-servers>
+  <button type="button" class="btn btn-primary" (click)="onClick()">
+    OnClick
+  </button>
+  <app-panel>
+    <h1 class="header" #panel>HelloWorld</h1>
+    <p class="body">Body</p>
+    <h4 class="footer">Footer</h4>
+  </app-panel>
 </div>

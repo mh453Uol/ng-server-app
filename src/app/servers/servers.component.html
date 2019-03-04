@@ -1,6 +1,33 @@
 <!-- <div app-server name='dev-majid' ip='192.1.1.1'></div> -->
-<button [disabled]="allowAddNewServer === false" type="button" class="btn btn-primary" (click)="onAddButtonClick()">
+<div class="row">
+  <div class="col">
+    <input type="text" class="form-control" placeholder="Server Name" [(ngModel)]="currentServer.name" />
+    <!-- 2 way binding, update automatically -->
+  </div>
+  <div class="col">
+    <input type="text" class="form-control" placeholder="Server IP" [(ngModel)]="currentServer.ip" />
+  </div>
+  <div class="col">
+    <select [(ngModel)]="currentServer.status" class="form-control">
+      <option [ngValue]="status.Offline">Offline</option>
+      <option [ngValue]="status.Online">Online</option>
+    </select>
+  </div>
+
+  <div class="col">
+    <select [(ngModel)]="currentServer.type" class="form-control">
+      <option [ngValue]="serverType.TIER_1">Tier 1</option>
+      <option [ngValue]="serverType.TIER_2">Tier 2</option>
+    </select>
+  </div>
+</div>
+
+<button [disabled]="allowAddNewServer === false" [hidden]="isEdit === true" type="button" class="btn btn-primary" (click)="onAddButtonClick()">
   Add Server
+</button>
+
+<button [hidden]="isEdit === false" type="button" class="btn btn-default">
+  Update
 </button>
 
 <div class="servers-container">
@@ -9,8 +36,7 @@
   </p>
   <div *ngFor="let server of servers; let i = index">
     current index {{i}}
-    <app-server [server]=" server" (removeServer)="onRemoveServer($event)">
-    </app-server>
+    <app-server [server]="server" (edit)="onEditServer($event)"></app-server>
   </div>
 </div>
 

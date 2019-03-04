@@ -3,17 +3,22 @@ export enum Status {
   Online
 }
 
+export enum ServerType {
+  TIER_1,
+  TIER_2
+}
+
 export class Server {
-  constructor() {
-    this.status = Status.Offline;
-  }
-  // constructor(id: number, name: string, status: Status) {
-  //   this.id = id;
-  //   this.name = name;
-  //   this.status = status;
-  // }
   name: string;
   ip: string;
   id: number;
   status: Status;
+  type: ServerType;
+
+  constructor() {
+    this.type = ServerType.TIER_1;
+    this.status = Status.Offline;
+    this.name = '';
+    this.ip = '';
+  }
 }
