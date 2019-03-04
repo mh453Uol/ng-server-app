@@ -1,14 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-<app-header></app-header>
+<app-header (viewChanged)="onViewChanged($event)"></app-header>
 <div class="container">
 
-  <!--
-    <app-recipes></app-recipes>
-    <app-shopping-list></app-shopping-list>
-  -->
 
-  <app-servers></app-servers>
+  <app-recipes *ngIf="view == 'recipes'"></app-recipes>
+  <app-shopping-list *ngIf="view == 'shopping-list'"></app-shopping-list>
+
+
+  <!-- <app-servers></app-servers>
   <button type="button" class="btn btn-primary" (click)="onClick()">
     OnClick
   </button>
@@ -16,5 +16,5 @@
     <h1 class="header" #panel>HelloWorld</h1>
     <p class="body">Body</p>
     <h4 class="footer">Footer</h4>
-  </app-panel>
+  </app-panel> -->
 </div>
