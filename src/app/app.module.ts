@@ -14,6 +14,10 @@ import {RecipeListComponent} from './recipes/recipe-list/recipe-list.component';
 import {RecipeItemComponent} from './recipes/recipe-list/recipe-item/recipe-item.component';
 import { TreeComponent } from './tree/tree.component';
 import { PanelComponent } from './panel/panel.component';
+import { BasicHighlightDirective } from './directive/basic-highlight.directive';
+import { PreserveFormattingDirective } from './directive/preserve-formatting.directive';
+import { UnlessDirective } from './directive/unless.directive';
+import { DropdownDirective } from './shared/directives/dropdown.directive';
 // module bundle components, services into one place
 @NgModule({
   // my components I have created
@@ -30,7 +34,11 @@ import { PanelComponent } from './panel/panel.component';
     HeaderComponent,
     RecipesComponent,
     TreeComponent,
-    PanelComponent
+    PanelComponent,
+    BasicHighlightDirective,
+    PreserveFormattingDirective,
+    UnlessDirective,
+    DropdownDirective
   ],
   // add modules to this modules (access functionality)
   imports: [
