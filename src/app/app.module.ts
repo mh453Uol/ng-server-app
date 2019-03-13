@@ -17,6 +17,7 @@ import { PanelComponent } from './panel/panel.component';
 import { BasicHighlightDirective } from './directive/basic-highlight.directive';
 import { PreserveFormattingDirective } from './directive/preserve-formatting.directive';
 import { UnlessDirective } from './directive/unless.directive';
+import { DropdownDirective } from './shared/directives/dropdown.directive';
 // module bundle components, services into one place
 @NgModule({
   // my components I have created
@@ -36,7 +37,8 @@ import { UnlessDirective } from './directive/unless.directive';
     PanelComponent,
     BasicHighlightDirective,
     PreserveFormattingDirective,
-    UnlessDirective
+    UnlessDirective,
+    DropdownDirective
   ],
   // add modules to this modules (access functionality)
   imports: [
