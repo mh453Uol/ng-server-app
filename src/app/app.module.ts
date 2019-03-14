@@ -18,6 +18,8 @@ import { BasicHighlightDirective } from './directive/basic-highlight.directive';
 import { PreserveFormattingDirective } from './directive/preserve-formatting.directive';
 import { UnlessDirective } from './directive/unless.directive';
 import { DropdownDirective } from './shared/directives/dropdown.directive';
+import { Highlightv1Directive } from './directive/highlightv1.directive';
+import { Highlightv2Directive } from './directive/highlightv2.directive';
 // module bundle components, services into one place
 @NgModule({
   // my components I have created
@@ -38,7 +40,9 @@ import { DropdownDirective } from './shared/directives/dropdown.directive';
     BasicHighlightDirective,
     PreserveFormattingDirective,
     UnlessDirective,
-    DropdownDirective
+    DropdownDirective,
+    Highlightv1Directive,
+    Highlightv2Directive
   ],
   // add modules to this modules (access functionality)
   imports: [
