@@ -1,4 +1,4 @@
-import { text } from '@angular/core/src/render3/instructions';
+import {text} from '@angular/core/src/render3/instructions';
 
 export class Account {
   name: string;
@@ -9,7 +9,7 @@ export class Account {
     this.status = status;
   }
 
-  get textualStatus() {
+  get textualStatus(): string {
     let textual: string;
     switch (this.status) {
       case 0: {

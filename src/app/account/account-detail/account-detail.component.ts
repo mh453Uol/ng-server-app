@@ -1,5 +1,5 @@
+import { Account } from './../models/account';
 import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
-
 @Component({
   selector: 'app-account-detail',
   templateUrl: './account-detail.component.html',
