@@ -7,15 +7,14 @@ import { Account } from '../models/account';
   styleUrls: ['./new-account.component.css']
 })
 export class NewAccountComponent implements OnInit {
+  accounts = [new Account('Majid', 1), new Account('Cameron', 0)];
 
-  accounts = [
-    new Account('Majid', 1),
-    new Account('Cameron', 0)
-  ];
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  onClickAddAccount(name: string, status: number) {
+    console.log(name, status);
+    this.accounts.splice(0, 0, new Account(name, +status));
   }
-
 }

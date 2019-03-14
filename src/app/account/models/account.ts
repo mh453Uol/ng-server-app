@@ -25,6 +25,7 @@ export class Account {
         break;
       }
     }
+    console.log(textual, this.status);
     return textual;
   }
 }
