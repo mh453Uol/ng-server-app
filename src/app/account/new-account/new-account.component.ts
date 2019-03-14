@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Account } from '../models/account';
 
 @Component({
@@ -7,7 +7,8 @@ import { Account } from '../models/account';
   styleUrls: ['./new-account.component.css']
 })
 export class NewAccountComponent implements OnInit {
-  accounts = [new Account('Majid', 1), new Account('Cameron', 0)];
+
+  @Output() accountAdded = new EventEmitter();
 
   constructor() {}
 
@@ -15,6 +16,6 @@ export class NewAccountComponent implements OnInit {
 
   onClickAddAccount(name: string, status: number) {
     console.log(name, status);
-    this.accounts.splice(0, 0, new Account(name, +status));
+    this.accountAdded.emit({name: name, status: status});
   }
 }

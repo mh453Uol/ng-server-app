@@ -21,6 +21,7 @@ import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { NewAccountComponent } from './account/new-account/new-account.component';
 import { AccountDetailComponent } from './account/account-detail/account-detail.component';
 import { AccountListComponent } from './account/account-list/account-list.component';
+import { ViewComponent } from './account/view/view.component';
 // module bundle components, services into one place
 @NgModule({
   // my components I have created
@@ -44,7 +45,8 @@ import { AccountListComponent } from './account/account-list/account-list.compon
     DropdownDirective,
     NewAccountComponent,
     AccountDetailComponent,
-    AccountListComponent
+    AccountListComponent,
+    ViewComponent
   ],
   // add modules to this modules (access functionality)
   imports: [

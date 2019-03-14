@@ -10,7 +10,3 @@
   </select>
 </div>
 <button type="submit" class="btn btn-primary" (click)="onClickAddAccount(name.value, status.value)">Add Account</button>
-
-<div *ngFor="let account of accounts">
-  <app-account-detail [account]="account"></app-account-detail>
-</div>
