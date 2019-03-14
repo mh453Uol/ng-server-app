@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Account} from '../models/account';
+import {THIS_EXPR} from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-account-view',
@@ -18,4 +19,11 @@ export class ViewComponent implements OnInit {
     this.accounts.splice(0, 0, new Account(event.name, +event.status));
   }
 
+  onStatusChanged(event: {account: Account, status: number}) {
+    const account = this.accounts.find(a => a === event.account);
+
+    if (account) {
+      account.status = event.status;
+    }
+  }
 }
