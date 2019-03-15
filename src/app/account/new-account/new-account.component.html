@@ -1,12 +1,12 @@
 <div class="form-group">
   <label for="name">Account Name</label>
-  <input #name type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter name">
+  <input [(ngModel)]="account.name" type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter name">
 </div>
 <div class="form-group">
-  <select name="status" class="form-control" #status>
-    <option value="0">Active</option>
-    <option value="1">In Active</option>
-    <option value="2">Hidden</option>
+  <select name="status" class="form-control" [(ngModel)]="account.status">
+    <option [value]="0">Active</option>
+    <option [value]="1">In Active</option>
+    <option [value]="2">Hidden</option>
   </select>
 </div>
-<button type="submit" class="btn btn-primary" (click)="onClickAddAccount(name.value, status.value)">Add Account</button>
+<button type="submit" class="btn btn-primary" (click)="onClickAddAccount()">Submit Account</button>

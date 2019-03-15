@@ -3,10 +3,12 @@ import {text} from '@angular/core/src/render3/instructions';
 export class Account {
   name: string;
   status: number;
+  id: number;
 
   constructor(name: string, status: number) {
     this.name = name;
     this.status = status;
+    this.id = Math.floor(Math.random() * 255 + 1);
   }
 
   get textualStatus(): string {
@@ -25,7 +27,6 @@ export class Account {
         break;
       }
     }
-    console.log(textual, this.status);
     return textual;
   }
 }

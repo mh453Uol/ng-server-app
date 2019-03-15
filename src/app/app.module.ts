@@ -1,3 +1,5 @@
+import { AccountService } from './account/services/account.service';
+import { LoggingService } from './shared/services/logging.service';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -54,7 +56,7 @@ import { ViewComponent } from './account/view/view.component';
     FormsModule
   ],
   // services I have created
-  providers: [],
+  providers: [ LoggingService, AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

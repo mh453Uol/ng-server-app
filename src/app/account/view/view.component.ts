@@ -1,6 +1,7 @@
+import {AccountService} from './../services/account.service';
+import {LoggingService} from './../../shared/services/logging.service';
 import {Component, OnInit} from '@angular/core';
 import {Account} from '../models/account';
-import {THIS_EXPR} from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-account-view',
@@ -8,22 +9,22 @@ import {THIS_EXPR} from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./view.component.css']
 })
 export class ViewComponent implements OnInit {
+  accounts: Account[];
 
-  accounts = [new Account('Majid', 1), new Account('Cameron', 0)];
+  constructor(private loggingService: LoggingService, private accountService: AccountService) {}
 
-  constructor() {}
   ngOnInit() {
-  }
-
-  onAccountAdded(event: {name: string, status: string}) {
-    this.accounts.splice(0, 0, new Account(event.name, +event.status));
+    this.accounts = this.accountService.getAccounts();
   }
 
   onStatusChanged(event: {account: Account, status: number}) {
-    const account = this.accounts.find(a => a === event.account);
+    this.loggingService.log(`account: ${event.account.name} status changed from ${event.account.status} to ${event.status}`);
 
-    if (account) {
-      account.status = event.status;
-    }
+    this.accountService.updateAccountStatus(event.account, event.status);
+  }
+
+  onEdit(account: Account) {
+    this.loggingService.log('ViewComponents:onEdit', account);
+    this.accountService.selectedAccount.emit(account);
   }
 }
