@@ -13,7 +13,7 @@ export enum Mode {
   styleUrls: ['./new-account.component.css']
 })
 export class NewAccountComponent implements OnInit {
-  _mode:Mode;
+  _mode: Mode;
   mode: Mode;
   account: Account;
 
