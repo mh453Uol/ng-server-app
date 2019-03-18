@@ -24,6 +24,9 @@ import { NewAccountComponent } from './account/new-account/new-account.component
 import { AccountDetailComponent } from './account/account-detail/account-detail.component';
 import { AccountListComponent } from './account/account-list/account-list.component';
 import { ViewComponent } from './account/view/view.component';
+import { Highlightv1Directive } from './directive/highlightv1.directive';
+import { Highlightv2Directive } from './directive/highlightv2.directive';
+
 // module bundle components, services into one place
 @NgModule({
   // my components I have created
@@ -49,6 +52,8 @@ import { ViewComponent } from './account/view/view.component';
     AccountDetailComponent,
     AccountListComponent,
     ViewComponent
+    Highlightv1Directive,
+    Highlightv2Directive
   ],
   // add modules to this modules (access functionality)
   imports: [
