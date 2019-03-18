@@ -1,0 +1,5 @@
+<app-new-account></app-new-account>
+
+<div *ngFor="let account of accounts">
+  <app-account-detail [account]="account" (statusChanged)="onStatusChanged($event)" (click)="onEdit(account)"></app-account-detail>
+</div>
