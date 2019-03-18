@@ -1,3 +1,5 @@
+import { AccountService } from './account/services/account.service';
+import { LoggingService } from './shared/services/logging.service';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -18,8 +20,13 @@ import { BasicHighlightDirective } from './directive/basic-highlight.directive';
 import { PreserveFormattingDirective } from './directive/preserve-formatting.directive';
 import { UnlessDirective } from './directive/unless.directive';
 import { DropdownDirective } from './shared/directives/dropdown.directive';
+import { NewAccountComponent } from './account/new-account/new-account.component';
+import { AccountDetailComponent } from './account/account-detail/account-detail.component';
+import { AccountListComponent } from './account/account-list/account-list.component';
+import { ViewComponent } from './account/view/view.component';
 import { Highlightv1Directive } from './directive/highlightv1.directive';
 import { Highlightv2Directive } from './directive/highlightv2.directive';
+
 // module bundle components, services into one place
 @NgModule({
   // my components I have created
@@ -41,6 +48,10 @@ import { Highlightv2Directive } from './directive/highlightv2.directive';
     PreserveFormattingDirective,
     UnlessDirective,
     DropdownDirective,
+    NewAccountComponent,
+    AccountDetailComponent,
+    AccountListComponent,
+    ViewComponent
     Highlightv1Directive,
     Highlightv2Directive
   ],
@@ -50,7 +61,7 @@ import { Highlightv2Directive } from './directive/highlightv2.directive';
     FormsModule
   ],
   // services I have created
-  providers: [],
+  providers: [ LoggingService, AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
