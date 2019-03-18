@@ -51,7 +51,7 @@ import { Highlightv2Directive } from './directive/highlightv2.directive';
     NewAccountComponent,
     AccountDetailComponent,
     AccountListComponent,
-    ViewComponent
+    ViewComponent,
     Highlightv1Directive,
     Highlightv2Directive
   ],
