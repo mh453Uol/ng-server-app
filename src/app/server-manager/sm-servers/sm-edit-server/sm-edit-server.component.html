@@ -1,3 +1,12 @@
-<p>
-  sm-edit-server works!
-</p>
+<div class="form-group">
+  <label for="name">Name</label>
+  <input [(ngModel)]="server.name" type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter name">
+</div>
+<div class="form-group">
+    <select [(ngModel)]="server.status" class="form-control">
+        <option [ngValue]="0">Online</option>
+        <option [ngValue]="1">Online</option>
+      </select>
+</div>
+{{server | json}}
+<button type="submit" class="btn btn-primary">Submit</button>
