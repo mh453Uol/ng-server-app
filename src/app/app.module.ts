@@ -26,6 +26,11 @@ import { AccountListComponent } from './account/account-list/account-list.compon
 import { ViewComponent } from './account/view/view.component';
 import { Highlightv1Directive } from './directive/highlightv1.directive';
 import { Highlightv2Directive } from './directive/highlightv2.directive';
+import { ServerManagerComponent } from './server-manager/server-manager.component';
+import { SmUserComponent } from './server-manager/sm-user/sm-user.component';
+import { SmServersComponent } from './server-manager/sm-servers/sm-servers.component';
+import { SmServerComponent } from './server-manager/sm-servers/sm-server/sm-server.component';
+import { SmEditServerComponent } from './server-manager/sm-servers/sm-edit-server/sm-edit-server.component';
 
 // module bundle components, services into one place
 @NgModule({
@@ -53,7 +58,12 @@ import { Highlightv2Directive } from './directive/highlightv2.directive';
     AccountListComponent,
     ViewComponent,
     Highlightv1Directive,
-    Highlightv2Directive
+    Highlightv2Directive,
+    ServerManagerComponent,
+    SmUserComponent,
+    SmServersComponent,
+    SmServerComponent,
+    SmEditServerComponent
   ],
   // add modules to this modules (access functionality)
   imports: [
