@@ -1,14 +1,12 @@
 <div class="row">
   <div class="col-md-5">
     <ul class="list-group" *ngFor="let u of servers">
-      <li
-        [routerLink]="[u.id,'edit']"
-        [queryParams]="{hash: '1'}"
-        class="list-group-item">{{u.name}}</li>
+      <li [routerLink]="[u.id,'edit']" [queryParams]="{hash: '1'}" class="list-group-item">{{u.name}}</li>
     </ul>
   </div>
 
   <div class="col-md-7">
-    <app-sm-edit-server></app-sm-edit-server>
+    <router-outlet></router-outlet>
   </div>
+
 </div>

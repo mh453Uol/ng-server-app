@@ -1,5 +1,5 @@
 import { ServersService } from './../../servers-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Server } from './../../../server/server.model';
 import { Component, OnInit, Query } from '@angular/core';
 import { ServerV2 } from '../../models/serverV2.model';
@@ -12,8 +12,12 @@ export class SmEditServerComponent implements OnInit {
   server: ServerV2 = new ServerV2();
   hash: string;
   constructor(private route: ActivatedRoute, private service: ServersService) {
-    const id = +this.route.snapshot.params['id'];
-    this.server = this.service.servers.find(s => s.id === id);
+    let id: number;
+
+    this.route.params.subscribe((params: Params) => {
+      id = +params['id'];
+      this.server = this.service.servers.find(s => s.id === id);
+    });
 
     this.route.queryParams.subscribe((q: Query) => {
       this.hash = q['hash'];
