@@ -32,12 +32,15 @@ import {SmUserComponent} from './server-manager/sm-user/sm-user.component';
 import {SmServersComponent} from './server-manager/sm-servers/sm-servers.component';
 import {SmServerComponent} from './server-manager/sm-servers/sm-server/sm-server.component';
 import {SmEditServerComponent} from './server-manager/sm-servers/sm-edit-server/sm-edit-server.component';
+import { SmAUserComponent } from './server-manager/sm-user/sm-a-user/sm-a-user.component';
 
 // module bundle components, services into one place
 const serverManagerRoutes: Routes = [
   {path: '', component: ServerManagerComponent},
   {path: 'server-manager/users', component: SmUserComponent},
-  {path: 'server-manager/servers', component: SmServersComponent}
+  {path: 'server-manager/users/:id', component: SmAUserComponent},
+  {path: 'server-manager/servers', component: SmServersComponent},
+  {path: 'server-manager/servers/:id/edit', component: SmEditServerComponent}
 ];
 
 @NgModule({
@@ -70,7 +73,8 @@ const serverManagerRoutes: Routes = [
     SmUserComponent,
     SmServersComponent,
     SmServerComponent,
-    SmEditServerComponent
+    SmEditServerComponent,
+    SmAUserComponent
   ],
   // add modules to this modules (access functionality)
   imports: [

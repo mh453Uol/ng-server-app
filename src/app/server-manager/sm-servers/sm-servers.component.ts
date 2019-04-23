@@ -1,3 +1,4 @@
+import { ServersService } from './../servers-service.service';
 import { ServerV2 } from './../models/serverV2.model';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,14 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class SmServersComponent implements OnInit {
   servers: ServerV2[] = [];
 
-  constructor() { }
+  constructor(private service: ServersService) {}
 
   ngOnInit() {
-    this.servers = [
-      new ServerV2(1, 'epo onprem', 0),
-      new ServerV2(2, 'epo aws cloud', 0),
-      new ServerV2(3, 'epo heroku', 1)
-    ];
+    this.servers = this.service.servers;
   }
-
 }

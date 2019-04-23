@@ -1,3 +1,4 @@
+import { ServersService } from './../servers-service.service';
 import { User } from './../models/user.model';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,13 +11,10 @@ export class SmUserComponent implements OnInit {
 
   users: User[] = [];
 
-  constructor() { }
+  constructor(private service: ServersService) { }
 
   ngOnInit() {
-    this.users = [
-      new User('majid'),
-      new User('adam')
-    ]
+    this.users = this.service.users;
   }
 
 }
