@@ -1,4 +1,6 @@
-import { Router, RouterModule } from '@angular/router';
+import { CanDeactivateGuard } from './server-manager/sm-servers/sm-edit-server/can-deactive-guard.service';
+import { AuthGuard } from './guards/auth-guard.service';
+import { AuthService } from './auth.service';
 import { PuzzleModule } from './puzzle/puzzle.module';
 import { AccountService } from './account/services/account.service';
 import { LoggingService } from './shared/services/logging.service';
@@ -36,7 +38,7 @@ import { SmEditServerComponent } from './server-manager/sm-servers/sm-edit-serve
 import { SmAUserComponent } from './server-manager/sm-user/sm-a-user/sm-a-user.component';
 import { NotFoundComponent } from './errors-pages/not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
-
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   // my components I have created
@@ -70,17 +72,13 @@ import { AppRoutingModule } from './app-routing.module';
     SmServerComponent,
     SmEditServerComponent,
     SmAUserComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent
   ],
   // add modules to this modules (access functionality)
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    PuzzleModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, PuzzleModule],
   // services I have created
-  providers: [LoggingService, AccountService],
+  providers: [LoggingService, AccountService, AuthService, AuthGuard, CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

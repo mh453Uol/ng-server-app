@@ -1,6 +1,6 @@
+import { CanComponentDeactive } from './can-deactive-guard.service';
 import { ServersService } from './../../servers-service.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Server } from './../../../server/server.model';
 import { Component, OnInit, Query } from '@angular/core';
 import { ServerV2 } from '../../models/serverV2.model';
 @Component({
@@ -8,7 +8,8 @@ import { ServerV2 } from '../../models/serverV2.model';
   templateUrl: './sm-edit-server.component.html',
   styleUrls: ['./sm-edit-server.component.css']
 })
-export class SmEditServerComponent {
+export class SmEditServerComponent implements CanComponentDeactive {
+  changesSaved = false;
   server: ServerV2 = new ServerV2();
   hash: string;
   constructor(
@@ -29,9 +30,26 @@ export class SmEditServerComponent {
   }
 
   onEdit() {
+    this.changesSaved = true;
     // queryParamsHandling: 'preserve' means it copies and replaces the query param for the next route navigate to
     this.router.navigate(['server-manager', 'users'], {
       queryParamsHandling: 'preserve'
     });
+  }
+
+  canDeactivate() {
+    if (this.changesSaved) {
+      return true;
+    }
+    const shouldSave = confirm(
+      'You have unsaved changes, want to save them before navigating away ?'
+    );
+
+    if (shouldSave) {
+      // dont navigate away
+      return false;
+    }
+    // navigate away since the user doesnt want to save changes
+    return true;
   }
 }

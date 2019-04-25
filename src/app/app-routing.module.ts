@@ -1,3 +1,5 @@
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './guards/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { ServerManagerComponent } from './server-manager/server-manager.component';
 import { SmUserComponent } from './server-manager/sm-user/sm-user.component';
@@ -7,6 +9,7 @@ import { SmEditServerComponent } from './server-manager/sm-servers/sm-edit-serve
 import { BoardComponent } from './puzzle/board/board.component';
 import { NotFoundComponent } from './errors-pages/not-found/not-found.component';
 import { Routes, RouterModule } from '@angular/router';
+import { CanDeactivateGuard } from './server-manager/sm-servers/sm-edit-server/can-deactive-guard.service';
 
 // module bundle components, services into one place
 const serverManagerRoutes: Routes = [
@@ -14,34 +17,29 @@ const serverManagerRoutes: Routes = [
   { path: '', component: ServerManagerComponent },
   {
     path: 'server-manager/users',
+    canActivateChild: [AuthGuard],
     component: SmUserComponent,
     children: [{ path: ':id', component: SmAUserComponent }]
   },
   // parent route
   {
     path: 'server-manager/servers',
+    // canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard], // apply guard on all children routes
     component: SmServersComponent,
     // child route, these get rendered in SmServersComponent router-outlet
-    children: [
-      { path: ':id/edit', component: SmEditServerComponent }
-    ]
+    children: [{ path: ':id/edit', component: SmEditServerComponent, canDeactivate: [CanDeactivateGuard] }]
   },
   { path: 'puzzle', component: BoardComponent },
+  { path: 'login', component: LoginComponent },
   // redirect to this url
-  { path: 'error', redirectTo: '/some-random-url'},
+  { path: 'error', redirectTo: '/some-random-url' },
   // wild card if route not found
-  { path: '**', component: NotFoundComponent}
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(serverManagerRoutes)
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forRoot(serverManagerRoutes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {
-
-
-}
+export class AppRoutingModule {}
