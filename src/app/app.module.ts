@@ -1,3 +1,4 @@
+import { PuzzleModule } from './puzzle/puzzle.module';
 import { AccountService } from './account/services/account.service';
 import { LoggingService } from './shared/services/logging.service';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
@@ -33,6 +34,8 @@ import { SmServersComponent } from './server-manager/sm-servers/sm-servers.compo
 import { SmServerComponent } from './server-manager/sm-servers/sm-server/sm-server.component';
 import { SmEditServerComponent } from './server-manager/sm-servers/sm-edit-server/sm-edit-server.component';
 import { SmAUserComponent } from './server-manager/sm-user/sm-a-user/sm-a-user.component';
+import { BoardComponent } from './puzzle/board/board.component';
+import { NotFoundComponent } from './errors-pages/not-found/not-found.component';
 
 // module bundle components, services into one place
 const serverManagerRoutes: Routes = [
@@ -41,17 +44,22 @@ const serverManagerRoutes: Routes = [
   {
     path: 'server-manager/users',
     component: SmUserComponent,
-    children: [
-      { path: ':id', component: SmAUserComponent }
-    ]
+    children: [{ path: ':id', component: SmAUserComponent }]
   },
   // parent route
   {
     path: 'server-manager/servers',
     component: SmServersComponent,
     // child route, these get rendered in SmServersComponent router-outlet
-    children: [{ path: ':id/edit', component: SmEditServerComponent }]
-  }
+    children: [
+      { path: ':id/edit', component: SmEditServerComponent }
+    ]
+  },
+  { path: 'puzzle', component: BoardComponent },
+  // redirect to this url
+  { path: 'error', redirectTo: '/some-random-url'},
+  // wild card if route not found
+  { path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
@@ -85,12 +93,14 @@ const serverManagerRoutes: Routes = [
     SmServersComponent,
     SmServerComponent,
     SmEditServerComponent,
-    SmAUserComponent
+    SmAUserComponent,
+    NotFoundComponent
   ],
   // add modules to this modules (access functionality)
   imports: [
     BrowserModule,
     FormsModule,
+    PuzzleModule,
     RouterModule.forRoot(serverManagerRoutes)
   ],
   // services I have created
