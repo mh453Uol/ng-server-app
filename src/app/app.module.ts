@@ -1,10 +1,10 @@
+import { Router, RouterModule } from '@angular/router';
 import { PuzzleModule } from './puzzle/puzzle.module';
 import { AccountService } from './account/services/account.service';
 import { LoggingService } from './shared/services/logging.service';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ServerComponent } from './server/server.component';
@@ -34,33 +34,9 @@ import { SmServersComponent } from './server-manager/sm-servers/sm-servers.compo
 import { SmServerComponent } from './server-manager/sm-servers/sm-server/sm-server.component';
 import { SmEditServerComponent } from './server-manager/sm-servers/sm-edit-server/sm-edit-server.component';
 import { SmAUserComponent } from './server-manager/sm-user/sm-a-user/sm-a-user.component';
-import { BoardComponent } from './puzzle/board/board.component';
 import { NotFoundComponent } from './errors-pages/not-found/not-found.component';
+import { AppRoutingModule } from './app-routing.module';
 
-// module bundle components, services into one place
-const serverManagerRoutes: Routes = [
-  // all top level routes here except children:[] get rendered in app.component router-outlet
-  { path: '', component: ServerManagerComponent },
-  {
-    path: 'server-manager/users',
-    component: SmUserComponent,
-    children: [{ path: ':id', component: SmAUserComponent }]
-  },
-  // parent route
-  {
-    path: 'server-manager/servers',
-    component: SmServersComponent,
-    // child route, these get rendered in SmServersComponent router-outlet
-    children: [
-      { path: ':id/edit', component: SmEditServerComponent }
-    ]
-  },
-  { path: 'puzzle', component: BoardComponent },
-  // redirect to this url
-  { path: 'error', redirectTo: '/some-random-url'},
-  // wild card if route not found
-  { path: '**', component: NotFoundComponent}
-];
 
 @NgModule({
   // my components I have created
@@ -99,9 +75,9 @@ const serverManagerRoutes: Routes = [
   // add modules to this modules (access functionality)
   imports: [
     BrowserModule,
+    AppRoutingModule,
     FormsModule,
-    PuzzleModule,
-    RouterModule.forRoot(serverManagerRoutes)
+    PuzzleModule
   ],
   // services I have created
   providers: [LoggingService, AccountService],
