@@ -1,22 +1,35 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-<app-header (viewChanged)="onViewChanged($event)"></app-header>
+<app-header></app-header>
 <div class="container">
 
+  <!-- <app-recipes *ngIf="view == 'recipes'"></app-recipes>
+  <app-shopping-list *ngIf="view == 'shopping-list'"></app-shopping-list> -->
 
-  <app-recipes *ngIf="view == 'recipes'"></app-recipes>
-  <app-shopping-list *ngIf="view == 'shopping-list'"></app-shopping-list>
-
-  <!-- <app-servers></app-servers>
-  <button type="button" class="btn btn-primary" (click)="onClick()">
-    OnClick
-  </button>
-  <app-panel>
-    <h1 class="header" #panel>HelloWorld</h1>
-    <p class="body">Body</p>
-    <h4 class="footer">Footer</h4>
-  </app-panel> -->
 
   <!-- <app-account-view></app-account-view> -->
+  <div *ngIf="false">
+    <button type="button" (click)="login()">Login</button>
+    <button type="button" (click)="logout()">Log out</button>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <!-- routerLinkActive - when url is / add css class .active -->
+        <!--routerLinkActiveOptions - exact true means when url full path is / -->
+        <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/">
+          Home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/server-manager/servers">Servers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/server-manager','users']">Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['cars']">Cars</a>
+      </li>
+    </ul>
   </div>
 
+  <router-outlet></router-outlet>
+</div>

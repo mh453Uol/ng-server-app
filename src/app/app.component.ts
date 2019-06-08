@@ -1,4 +1,5 @@
-import {PanelComponent} from './panel/panel.component';
+import { AuthService } from './auth.service';
+import { PanelComponent } from './panel/panel.component';
 import {
   Component,
   ContentChild,
@@ -12,6 +13,7 @@ import {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterContentInit {
+  constructor(private authService: AuthService) {}
   title = 'app';
   view = 'recipes';
 
@@ -25,7 +27,14 @@ export class AppComponent implements AfterContentInit {
     console.log(this.panel);
   }
 
-  onViewChanged(event: {page: string}) {
+  onViewChanged(event: { page: string }) {
     this.view = event.page;
+  }
+  login() {
+    this.authService.login();
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

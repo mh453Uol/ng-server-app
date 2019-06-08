@@ -7,11 +7,12 @@ import { ShoppingListService } from 'src/app/shopping-list/services/shopping-lis
   providedIn: 'root'
 })
 export class RecipeService {
-  constructor(private shoppingListService: ShoppingListService) {}
-  recipeSelected = new EventEmitter<Recipe>();
+constructor(private shoppingListService: ShoppingListService) {}
+recipeSelected = new EventEmitter<Recipe>();
 
-  private recipes: Recipe[] = [
+private recipes: Recipe[] = [
     new Recipe(
+      1,
       'Omelet',
       'Asain omelet with spices',
       [
@@ -20,6 +21,7 @@ export class RecipeService {
       [new Ingredient('Eggs', 3), new Ingredient('1/4 Brocali', 1)]
     ),
     new Recipe(
+      2,
       'Chickpea Curry',
       'Afgani Curry',
       [],
@@ -35,9 +37,16 @@ export class RecipeService {
     return this.recipes;
   }
 
+  getRecipeById(id: number) {
+    return this.recipes.find(r => r.id === id);
+  }
+
   addRecipeToShoppingList(recipe: Recipe) {
     for (const i of recipe.ingredients) {
       this.shoppingListService.addIngredient(i);
     }
   }
+    addRecipe(recipe: Recipe): any {
+      this.recipes.push(recipe);
+    }
 }

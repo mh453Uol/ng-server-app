@@ -1,0 +1,5 @@
+<ul class="list-group" *ngFor="let u of users">
+  <li class="list-group-item" [routerLink]="[u.name]">{{u.name}}</li>
+</ul>
+
+<router-outlet></router-outlet>
