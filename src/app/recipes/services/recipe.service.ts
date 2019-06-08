@@ -12,6 +12,7 @@ export class RecipeService {
 
   private recipes: Recipe[] = [
     new Recipe(
+      1,
       'Omelet',
       'Asain omelet with spices',
       [
@@ -20,6 +21,7 @@ export class RecipeService {
       [new Ingredient('Eggs', 3), new Ingredient('1/4 Brocali', 1)]
     ),
     new Recipe(
+      2,
       'Chickpea Curry',
       'Afgani Curry',
       [],
@@ -33,6 +35,10 @@ export class RecipeService {
 
   getRecipes() {
     return this.recipes;
+  }
+
+  getRecipeById(id: number) {
+    return this.recipes.find(r => r.id === id);
   }
 
   addRecipeToShoppingList(recipe: Recipe) {

@@ -1,3 +1,4 @@
+import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { CarDetailComponent } from './cars/car-detail/car-detail.component';
 import { CarsComponent } from './cars/cars.component';
@@ -20,8 +21,11 @@ const serverManagerRoutes: Routes = [
   // all top level routes here except children:[] get rendered in app.component router-outlet
   { path: '', component: ServerManagerComponent },
   ///////////// RECIPE BOOK ///////////////////////////
-  { path: 'recipes', component: RecipesComponent},
-  { path: 'shopping-list', component: ShoppingListComponent}
+  { path: 'recipes', component: RecipesComponent, children:
+    [
+      { path: ':id', component: RecipeDetailComponent}
+    ]},
+  { path: 'shopping-list', component: ShoppingListComponent },
 
   ///////////// SERVER MANAGER ///////////////////////////
   {
