@@ -41,6 +41,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { CarsComponent } from './cars/cars.component';
 import { CarDetailComponent } from './cars/car-detail/car-detail.component';
+import { GuideComponent } from './shared/guide/guide.component';
+import { RecipeFormComponent } from './recipes/recipe-form/recipe-form.component';
 
 @NgModule({
   // my components I have created
@@ -77,7 +79,9 @@ import { CarDetailComponent } from './cars/car-detail/car-detail.component';
     NotFoundComponent,
     LoginComponent,
     CarsComponent,
-    CarDetailComponent
+    CarDetailComponent,
+    GuideComponent,
+    RecipeFormComponent
   ],
   // add modules to this modules (access functionality)
   imports: [BrowserModule, AppRoutingModule, FormsModule, PuzzleModule],

@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Recipe Book</a>
+  <a class="navbar-brand" [routerLink]="['']">Recipe Book</a>
   <button class="navbar-toggler" type="button" (click)="collapse = !collapse" aria-controls="navbarNavAltMarkup"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" [ngClass]="{'show': collapse}">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" [routerLink]="['/recipes']">Recipes</a>
+      <a class="nav-item nav-link" [routerLink]="['']">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" [routerLink]="['/recipes/']">Recipes</a>
       <a class="nav-item nav-link" [routerLink]="['/shopping-list']">Shopping List</a>
     </div>
 

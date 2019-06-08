@@ -1,3 +1,4 @@
+import { RecipeFormComponent } from './recipes/recipe-form/recipe-form.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { CarDetailComponent } from './cars/car-detail/car-detail.component';
@@ -15,6 +16,7 @@ import { NotFoundComponent } from './errors-pages/not-found/not-found.component'
 import { Routes, RouterModule } from '@angular/router';
 import { CanDeactivateGuard } from './server-manager/sm-servers/sm-edit-server/can-deactive-guard.service';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { GuideComponent } from './shared/guide/guide.component';
 
 // module bundle components, services into one place
 const serverManagerRoutes: Routes = [
@@ -23,7 +25,9 @@ const serverManagerRoutes: Routes = [
   ///////////// RECIPE BOOK ///////////////////////////
   { path: 'recipes', component: RecipesComponent, children:
     [
-      { path: ':id', component: RecipeDetailComponent}
+      { path: '', component: GuideComponent, data: {message: 'No Recipe Selected!'}},
+      { path: 'add', component: RecipeFormComponent},
+      { path: ':id', component: RecipeDetailComponent},
     ]},
   { path: 'shopping-list', component: ShoppingListComponent },
 
