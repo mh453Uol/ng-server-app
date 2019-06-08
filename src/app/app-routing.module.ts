@@ -27,6 +27,7 @@ const serverManagerRoutes: Routes = [
     [
       { path: '', component: GuideComponent, data: {message: 'No Recipe Selected!'}},
       { path: 'add', component: RecipeFormComponent},
+      { path: ':id/edit', component: RecipeFormComponent, data: {isEditMode: true}},
       { path: ':id', component: RecipeDetailComponent},
     ]},
   { path: 'shopping-list', component: ShoppingListComponent },

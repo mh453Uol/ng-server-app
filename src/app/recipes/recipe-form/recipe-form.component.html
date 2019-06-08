@@ -1,16 +1,19 @@
+<h2 *ngIf="!isEditMode">Add</h2>
+<h2 *ngIf="isEditMode">Edit Recipe</h2>
+<hr>
 <form>
   <div class="form-group">
     <label for="name">Name</label>
     <input #name type="text" class="form-control" id="name" aria-describedby="nameHelp"
-      placeholder="Enter Recipe Name i.e Beans on Toast">
+      placeholder="Enter Recipe Name i.e Beans on Toast" value="{{recipe?.name || ''}}">
   </div>
   <div class="form-group">
     <label for="description">Description</label>
-    <input #description type="text" class="form-control" id="description" placeholder="Recipe Description">
+    <input #description value="{{recipe?.description || ''}}" type="text" class="form-control" id="description" placeholder="Recipe Description">
   </div>
   <div class="form-group">
       <label for="link-url">Image Url</label>
-      <input #url type="text" class="form-control" id="link-url" placeholder="Image Url">
+      <input #url value="{{recipe?.imagePaths[0] || ''}}" type="text" class="form-control" id="link-url" placeholder="Image Url">
   </div>
   <button (click)="addNewRecipe()" type="submit" class="btn btn-primary">Submit</button>
 </form>

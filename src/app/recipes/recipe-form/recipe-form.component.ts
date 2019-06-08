@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Data } from '@angular/router';
 import { RecipeService } from './../services/recipe.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
@@ -13,23 +13,41 @@ export class RecipeFormComponent implements OnInit {
   @ViewChild('description') description: ElementRef;
   @ViewChild('url') url: ElementRef;
 
+  isEditMode = false;
   recipe: Recipe;
 
-  constructor(private recipeService: RecipeService, private router: Router) {}
+  constructor(
+    private recipeService: RecipeService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {
+    this.activatedRoute.data.subscribe((d: Data) => {
+      if (d['isEditMode'] != null) {
+        this.isEditMode = d['isEditMode'];
+
+        const id = +this.activatedRoute.snapshot.paramMap.get('id');
+        this.recipe = this.recipeService.getRecipeById(id);
+      }
+    });
+  }
 
   ngOnInit() {}
 
   addNewRecipe() {
-    const randomId = Math.floor(Math.random() * 256);
-    this.recipe = new Recipe(
-      randomId,
-      this.name.nativeElement.value,
-      this.description.nativeElement.value,
-      [this.url.nativeElement.value],
-      []
-    );
+    if (!this.isEditMode) {
+      const randomId = Math.floor(Math.random() * 256);
+      this.recipe = new Recipe(
+        randomId,
+        this.name.nativeElement.value,
+        this.description.nativeElement.value,
+        [this.url.nativeElement.value],
+        []
+      );
 
-    this.recipeService.addRecipe(this.recipe);
+      this.recipeService.addRecipe(this.recipe);
+    } else {
+      //.
+    }
 
     this.router.navigate(['/recipes']);
   }
