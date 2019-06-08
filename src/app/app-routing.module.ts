@@ -1,3 +1,4 @@
+import { RecipesComponent } from './recipes/recipes.component';
 import { CarDetailComponent } from './cars/car-detail/car-detail.component';
 import { CarsComponent } from './cars/cars.component';
 import { LoginComponent } from './login/login.component';
@@ -12,11 +13,17 @@ import { BoardComponent } from './puzzle/board/board.component';
 import { NotFoundComponent } from './errors-pages/not-found/not-found.component';
 import { Routes, RouterModule } from '@angular/router';
 import { CanDeactivateGuard } from './server-manager/sm-servers/sm-edit-server/can-deactive-guard.service';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 // module bundle components, services into one place
 const serverManagerRoutes: Routes = [
   // all top level routes here except children:[] get rendered in app.component router-outlet
   { path: '', component: ServerManagerComponent },
+  ///////////// RECIPE BOOK ///////////////////////////
+  { path: 'recipes', component: RecipesComponent},
+  { path: 'shopping-list', component: ShoppingListComponent}
+
+  ///////////// SERVER MANAGER ///////////////////////////
   {
     path: 'server-manager/users',
     canActivateChild: [AuthGuard],
