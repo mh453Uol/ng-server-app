@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Car } from './models/car.model';
 
@@ -9,7 +10,7 @@ import { Car } from './models/car.model';
 export class CarsComponent implements OnInit {
   cars: Car[] = [];
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.cars = [
@@ -18,5 +19,9 @@ export class CarsComponent implements OnInit {
       new Car(3, 'Land Rover Sport'),
       new Car(4, 'Nissan Skyliner')
     ];
+  }
+
+  carSelected(car: Car) {
+    this.router.navigate(['/cars/' + car.id]);
   }
 }

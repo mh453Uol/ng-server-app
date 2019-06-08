@@ -1,6 +1,6 @@
 <ul *ngFor="let car of cars">
   <li>
-    <a routerLink="/cars/{{car.id}}">{{car.id}} - {{car.model}}</a>
+    <a (click)="carSelected(car)">{{car.id}} - {{car.model}}</a>
   </li>
 </ul>
 
