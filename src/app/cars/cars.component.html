@@ -1,0 +1,7 @@
+<ul *ngFor="let car of cars">
+  <li>
+    <a routerLink="/cars/{{car.id}}">{{car.id}} - {{car.model}}</a>
+  </li>
+</ul>
+
+<router-outlet></router-outlet>

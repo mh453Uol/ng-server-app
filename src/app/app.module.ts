@@ -39,6 +39,8 @@ import { SmAUserComponent } from './server-manager/sm-user/sm-a-user/sm-a-user.c
 import { NotFoundComponent } from './errors-pages/not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
+import { CarsComponent } from './cars/cars.component';
+import { CarDetailComponent } from './cars/car-detail/car-detail.component';
 
 @NgModule({
   // my components I have created
@@ -73,7 +75,9 @@ import { LoginComponent } from './login/login.component';
     SmEditServerComponent,
     SmAUserComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    CarsComponent,
+    CarDetailComponent
   ],
   // add modules to this modules (access functionality)
   imports: [BrowserModule, AppRoutingModule, FormsModule, PuzzleModule],

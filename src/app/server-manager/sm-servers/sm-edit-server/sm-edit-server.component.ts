@@ -9,7 +9,7 @@ import { ServerV2 } from '../../models/serverV2.model';
   styleUrls: ['./sm-edit-server.component.css']
 })
 export class SmEditServerComponent implements CanComponentDeactive {
-  changesSaved = false;
+  unsavedChanges = false;
   server: ServerV2 = new ServerV2();
   hash: string;
   constructor(
@@ -30,7 +30,7 @@ export class SmEditServerComponent implements CanComponentDeactive {
   }
 
   onEdit() {
-    this.changesSaved = true;
+    this.unsavedChanges = true;
     // queryParamsHandling: 'preserve' means it copies and replaces the query param for the next route navigate to
     this.router.navigate(['server-manager', 'users'], {
       queryParamsHandling: 'preserve'
@@ -38,7 +38,7 @@ export class SmEditServerComponent implements CanComponentDeactive {
   }
 
   canDeactivate() {
-    if (this.changesSaved) {
+    if (!this.unsavedChanges) {
       return true;
     }
     const shouldSave = confirm(

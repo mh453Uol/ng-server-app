@@ -1,3 +1,5 @@
+import { CarDetailComponent } from './cars/car-detail/car-detail.component';
+import { CarsComponent } from './cars/cars.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth-guard.service';
 import { NgModule } from '@angular/core';
@@ -24,13 +26,22 @@ const serverManagerRoutes: Routes = [
   // parent route
   {
     path: 'server-manager/servers',
-    // canActivate: [AuthGuard],
     canActivateChild: [AuthGuard], // apply guard on all children routes
     component: SmServersComponent,
     // child route, these get rendered in SmServersComponent router-outlet
-    children: [{ path: ':id/edit', component: SmEditServerComponent, canDeactivate: [CanDeactivateGuard] }]
+    children: [
+      {
+        path: ':id/edit',
+        component: SmEditServerComponent,
+        canDeactivate: [CanDeactivateGuard]
+      }
+    ]
   },
-  { path: 'puzzle', component: BoardComponent },
+  {
+    path: 'cars',
+    component: CarsComponent,
+    children: [{ path: ':id', component: CarDetailComponent }]
+  },
   { path: 'login', component: LoginComponent },
   // redirect to this url
   { path: 'error', redirectTo: '/some-random-url' },
