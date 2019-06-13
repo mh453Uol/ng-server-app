@@ -17,6 +17,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CanDeactivateGuard } from './server-manager/sm-servers/sm-edit-server/can-deactive-guard.service';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { GuideComponent } from './shared/guide/guide.component';
+import { MyObservableComponent } from './my-observable/my-observable.component';
 
 // module bundle components, services into one place
 const serverManagerRoutes: Routes = [
@@ -58,6 +59,10 @@ const serverManagerRoutes: Routes = [
     component: CarsComponent,
     children: [{ path: ':id', component: CarDetailComponent }]
   },
+  {
+    path: 'timer',
+    component: MyObservableComponent
+  }
   { path: 'login', component: LoginComponent },
   // redirect to this url
   { path: 'error', redirectTo: '/some-random-url' },

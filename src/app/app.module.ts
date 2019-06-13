@@ -43,6 +43,7 @@ import { CarsComponent } from './cars/cars.component';
 import { CarDetailComponent } from './cars/car-detail/car-detail.component';
 import { GuideComponent } from './shared/guide/guide.component';
 import { RecipeFormComponent } from './recipes/recipe-form/recipe-form.component';
+import { MyObservableComponent } from './my-observable/my-observable.component';
 
 @NgModule({
   // my components I have created
@@ -81,7 +82,8 @@ import { RecipeFormComponent } from './recipes/recipe-form/recipe-form.component
     CarsComponent,
     CarDetailComponent,
     GuideComponent,
-    RecipeFormComponent
+    RecipeFormComponent,
+    MyObservableComponent
   ],
   // add modules to this modules (access functionality)
   imports: [BrowserModule, AppRoutingModule, FormsModule, PuzzleModule],
