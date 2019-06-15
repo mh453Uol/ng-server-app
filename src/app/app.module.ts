@@ -1,3 +1,4 @@
+import { TimerService } from './shared/services/timer/timer.service';
 import { CanDeactivateGuard } from './server-manager/sm-servers/sm-edit-server/can-deactive-guard.service';
 import { AuthGuard } from './guards/auth-guard.service';
 import { AuthService } from './auth.service';
@@ -45,6 +46,7 @@ import { GuideComponent } from './shared/guide/guide.component';
 import { RecipeFormComponent } from './recipes/recipe-form/recipe-form.component';
 import { MyObservableComponent } from './my-observable/my-observable.component';
 import { UserService } from './my-observable/user.service';
+import { PomodorroTimerComponent } from './pomodorro-timer/pomodorro-timer.component';
 
 @NgModule({
   // my components I have created
@@ -84,12 +86,13 @@ import { UserService } from './my-observable/user.service';
     CarDetailComponent,
     GuideComponent,
     RecipeFormComponent,
-    MyObservableComponent
+    MyObservableComponent,
+    PomodorroTimerComponent
   ],
   // add modules to this modules (access functionality)
   imports: [BrowserModule, AppRoutingModule, FormsModule, PuzzleModule],
   // services I have created
-  providers: [LoggingService, AccountService, AuthService, AuthGuard, CanDeactivateGuard, UserService],
+  providers: [LoggingService, AccountService, AuthService, AuthGuard, CanDeactivateGuard, UserService, TimerService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

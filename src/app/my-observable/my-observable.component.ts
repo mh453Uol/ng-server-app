@@ -79,7 +79,4 @@ export class MyObservableComponent implements OnInit {
     );
   }
 
-  subjectInRxjs() {
-    const userActivated = new Subject();
-  }
 }

@@ -5,15 +5,18 @@ import {
   Component,
   ContentChild,
   AfterContentInit,
-  ElementRef
+  ElementRef,
+  OnInit
 } from '@angular/core';
+import { Timer } from './shared/services/timer/model/timer.model';
+import { FUNCTION_TYPE } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterContentInit {
+export class AppComponent implements OnInit, AfterContentInit {
   constructor(
     private authService: AuthService,
     private userService: UserService
@@ -23,6 +26,21 @@ export class AppComponent implements AfterContentInit {
 
   @ContentChild('panel') panel: ElementRef;
 
+  ngOnInit() {
+    const timer = new Timer();
+    timer.time.subscribe((duration: number) => {
+      console.log(duration);
+    });
+    timer.start(2);
+
+    setTimeout(function() {
+      timer.pause(); // pause for 15 seconds
+    }, 1000 * 15);
+
+    setTimeout(function() {
+      timer.resume(); // after 30 seconds continue
+    }, 1000 * 30);
+  }
   ngAfterContentInit(): void {
     console.log(this.panel);
   }
