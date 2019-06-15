@@ -23,8 +23,6 @@ export class RecipeListComponent implements OnInit {
       this.recipes[index]
     );
     this.recipeService.recipeSelected.emit(this.recipes[index]);
-    // this.router.navigate(['/recipes', this.recipes[index].id], {
-    //   queryParams: { isBlue: (Math.random() > 0.5 ? true : false) }
-    // });
+    this.router.navigate(['/recipes', this.recipes[index].id]);
   }
 }

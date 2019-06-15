@@ -2,6 +2,7 @@ import { ActivatedRoute, Params, ParamMap } from '@angular/router';
 import { RecipeService } from './../services/recipe.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
+import { UserService } from '../../my-observable/user.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -14,7 +15,8 @@ export class RecipeDetailComponent implements OnInit {
 
   constructor(
     private recipeService: RecipeService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private userService: UserService
   ) {
     this.route.params.subscribe((p: Params) => {
       this.id = +p['id'];
@@ -28,7 +30,11 @@ export class RecipeDetailComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userService.userActivated.subscribe(data => {
+      alert(JSON.stringify(data));
+    });
+  }
 
   addToShoppingList() {
     this.recipeService.addRecipeToShoppingList(this.recipe);

@@ -1,3 +1,4 @@
+import { UserService } from './my-observable/user.service';
 import { AuthService } from './auth.service';
 import { PanelComponent } from './panel/panel.component';
 import {
@@ -13,7 +14,10 @@ import {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterContentInit {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService
+  ) {}
   title = 'app';
   view = 'recipes';
 
@@ -36,5 +40,9 @@ export class AppComponent implements AfterContentInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  activateUser() {
+    this.userService.userActivated.next({ id: 1, name: 'Majid' });
   }
 }
