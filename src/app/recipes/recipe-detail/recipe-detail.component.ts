@@ -1,4 +1,4 @@
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, ParamMap } from '@angular/router';
 import { RecipeService } from './../services/recipe.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
@@ -19,7 +19,12 @@ export class RecipeDetailComponent implements OnInit {
     this.route.params.subscribe((p: Params) => {
       this.id = +p['id'];
       this.recipe = this.recipeService.getRecipeById(this.id);
-      console.log(this.id, this.recipe);
+      //console.log(this.id, this.recipe);
+      console.log(p);
+    });
+
+    this.route.queryParamMap.subscribe((p: ParamMap) => {
+      console.log(p);
     });
   }
 
@@ -28,5 +33,4 @@ export class RecipeDetailComponent implements OnInit {
   addToShoppingList() {
     this.recipeService.addRecipeToShoppingList(this.recipe);
   }
-
 }

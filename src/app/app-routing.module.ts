@@ -62,7 +62,7 @@ const serverManagerRoutes: Routes = [
   {
     path: 'timer',
     component: MyObservableComponent
-  }
+  },
   { path: 'login', component: LoginComponent },
   // redirect to this url
   { path: 'error', redirectTo: '/some-random-url' },
