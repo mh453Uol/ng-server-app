@@ -26,7 +26,6 @@ export class Timer {
         } else {
           this.secondsElapsed = second - this.secondsPausedFor;
           this.time.next(this.secondsElapsed);
-          this.secondsElapsed = 0;
         }
       }
     });
