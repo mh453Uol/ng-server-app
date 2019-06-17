@@ -27,19 +27,22 @@ export class AppComponent implements OnInit, AfterContentInit {
   @ContentChild('panel') panel: ElementRef;
 
   ngOnInit() {
-    const timer = new Timer();
-    timer.time.subscribe((duration: number) => {
-      console.log(duration);
-    });
-    timer.start(2);
+    // const timer = new Timer();
+    // timer.time.subscribe((duration: number) => {
+    //   console.log(duration);
+    // });
 
-    setTimeout(function() {
-      timer.pause(); // pause for 15 seconds
-    }, 1000 * 15);
+    // timer.start(1);
 
-    setTimeout(function() {
-      timer.resume(); // after 30 seconds continue
-    }, 1000 * 30);
+    // setTimeout(function() {
+    //   console.log('Pausing for 15 seconds');
+    //   timer.pause(); // pause for 15 seconds
+    // }, 1000 * 15);
+
+    // setTimeout(function() {
+    //   console.log('Resume');
+    //   timer.resume(); // after 30 seconds continue
+    // }, 1000 * 30);
   }
   ngAfterContentInit(): void {
     console.log(this.panel);
