@@ -42,7 +42,8 @@ export class Timer {
   }
   reset() {
     this.stopTimer();
-    this.start(this.durationInMinutes);
+    this.secondsElapsed = 0;
+    this.secondsPausedFor = 0;
   }
 
   private shouldStopTimer(elapsedSeconds: number, durationAsMinutes: number) {

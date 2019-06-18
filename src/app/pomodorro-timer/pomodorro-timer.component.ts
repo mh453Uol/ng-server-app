@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TimerService } from '../shared/services/timer/timer.service';
 import { Timer } from '../shared/services/timer/model/timer.model';
+import { Pomodoro } from './model/pomodoro-model';
+import { Break } from './model/break.model';
 
 @Component({
   selector: 'app-pomodorro-timer',
@@ -13,20 +14,48 @@ export class PomodorroTimerComponent implements OnInit {
 
   isStarted = false;
   isPaused = false;
+  pomodors = [
+    new Pomodoro(0.5),
+    new Break(1),
+    new Pomodoro(),
+    new Break(5),
+    new Pomodoro(),
+    new Break(5),
+    new Pomodoro(),
+    new Break(15)
+  ];
+  currentPomodoro: Pomodoro | Break;
+  currentPomodoroIndex: number;
 
   constructor() { }
 
   ngOnInit() {
+    this.currentPomodoroIndex = 0;
+    this.currentPomodoro = this.pomodors[this.currentPomodoroIndex];
   }
 
   onStartTimer() {
     this.isStarted = true;
 
-    this.timer.time.subscribe((seconds: number) => {
-      this.duration = seconds;
-    });
+    this.timer.start(this.currentPomodoro.durationInMinute);
+    this.currentPomodoro.start();
 
-    this.timer.start(2);
+    this.timer.time.subscribe(
+      (seconds: number) => {
+      this.duration = seconds;
+      },
+      () => {},
+      () => {
+        // timer ended
+        this.timer = new Timer();
+        this.currentPomodoroIndex++;
+        this.currentPomodoro = this.pomodors[this.currentPomodoroIndex++];
+        this.onResetTimer();
+        this.onStartTimer();
+      }
+    );
+
+
   }
 
   onResumeTimer() {
@@ -40,6 +69,9 @@ export class PomodorroTimerComponent implements OnInit {
   }
 
   onResetTimer() {
+    this.isStarted = false;
+    this.isPaused = false;
+    this.duration = 0;
     this.timer.reset();
   }
 
