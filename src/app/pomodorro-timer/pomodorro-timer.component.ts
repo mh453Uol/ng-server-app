@@ -10,69 +10,63 @@ import { Break } from './model/break.model';
 })
 export class PomodorroTimerComponent implements OnInit {
   duration: number;
-  timer = new Timer();
-
   isStarted = false;
   isPaused = false;
   pomodors = [
+    new Pomodoro(0.1),
+    new Break(0.2),
+    new Pomodoro(0.3),
+    new Break(0.4),
     new Pomodoro(0.5),
-    new Break(1),
-    new Pomodoro(),
-    new Break(5),
-    new Pomodoro(),
-    new Break(5),
-    new Pomodoro(),
-    new Break(15)
+    new Break(0.6),
+    new Pomodoro(0.7),
+    new Break(0.8)
   ];
   currentPomodoro: Pomodoro | Break;
   currentPomodoroIndex: number;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.currentPomodoroIndex = 0;
-    this.currentPomodoro = this.pomodors[this.currentPomodoroIndex];
+    this.currentPomodoro = this.pomodors[0];
   }
 
   onStartTimer() {
     this.isStarted = true;
 
-    this.timer.start(this.currentPomodoro.durationInMinute);
     this.currentPomodoro.start();
 
-    this.timer.time.subscribe(
+    this.currentPomodoro.timer.time.subscribe(
       (seconds: number) => {
-      this.duration = seconds;
+        this.duration = seconds;
       },
       () => {},
       () => {
         // timer ended
-        this.timer = new Timer();
+        this.duration = 0;
         this.currentPomodoroIndex++;
         this.currentPomodoro = this.pomodors[this.currentPomodoroIndex++];
-        this.onResetTimer();
         this.onStartTimer();
       }
     );
-
-
   }
 
   onResumeTimer() {
     this.isPaused = false;
-    this.timer.resume();
+    this.currentPomodoro.timer.resume();
   }
 
   onPauseTimer() {
     this.isPaused = true;
-    this.timer.pause();
+    this.currentPomodoro.timer.pause();
   }
 
   onResetTimer() {
     this.isStarted = false;
     this.isPaused = false;
     this.duration = 0;
-    this.timer.reset();
+    this.currentPomodoro.timer.reset();
   }
 
   isResumeable() {
@@ -82,5 +76,4 @@ export class PomodorroTimerComponent implements OnInit {
   isPauseable() {
     return this.isStarted && !this.isPaused;
   }
-
 }

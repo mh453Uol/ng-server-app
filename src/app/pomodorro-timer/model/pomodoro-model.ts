@@ -1,18 +1,27 @@
 import { Task } from './task.interface';
+import { Timer } from '../../shared/services/timer/model/timer.model';
 export class Pomodoro implements Task {
   durationInMinute = 25;
-  started: Date;
-  endered: Date;
+  timer: Timer;
 
   constructor(duration?: number) {
     this.durationInMinute = duration;
   }
 
   start() {
-    this.started = new Date();
+    this.timer = new Timer();
+    this.timer.start(this.durationInMinute);
   }
 
   stop() {
-    this.endered = new Date();
+    this.timer.stop();
+  }
+
+  get started() {
+    return this.started;
+  }
+
+  get stopped() {
+    return this.stopped;
   }
 }
