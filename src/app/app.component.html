@@ -31,9 +31,9 @@
     </ul>
   </div>
 
-  <button type="button" (click)="activateUser()">Activate User</button>
+  <button [hidden]="true" type="button" (click)="activateUser()">Activate User</button>
 
   <router-outlet></router-outlet>
 
-  <app-pomodorro-timer></app-pomodorro-timer>
+  <!-- <app-pomodorro-timer></app-pomodorro-timer> -->
 </div>

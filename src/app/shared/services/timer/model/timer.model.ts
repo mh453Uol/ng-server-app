@@ -3,7 +3,6 @@ import { interval, Subscription, Subject } from 'rxjs';
 export class Timer {
   private ONE_SECOND = 1000; // 1000ms = 1 second
   private SECONDS_IN_A_MINUTE = 60;
-  private durationInMinutes = 30; // default is 30 minutes
 
   // States of timer
   private secondsElapsed = 0;
@@ -17,10 +16,9 @@ export class Timer {
 
   start(duration: number) {
     this.started = new Date();
-    this.durationInMinutes = duration;
 
     this.timer = interval(this.ONE_SECOND).subscribe((second: number) => {
-      if (this.shouldStopTimer(second, duration)) {
+      if (this.shouldStopTimer(this.secondsElapsed, duration)) {
         this.stopTimer();
       } else {
         // if is paused keep track of how long
@@ -51,7 +49,7 @@ export class Timer {
   }
 
   private shouldStopTimer(elapsedSeconds: number, durationAsMinutes: number) {
-    return elapsedSeconds > durationAsMinutes * this.SECONDS_IN_A_MINUTE;
+    return elapsedSeconds >= (durationAsMinutes * this.SECONDS_IN_A_MINUTE);
   }
 
   private stopTimer() {
