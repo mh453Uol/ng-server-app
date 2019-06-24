@@ -17,19 +17,32 @@ import { Routes, RouterModule } from '@angular/router';
 import { CanDeactivateGuard } from './server-manager/sm-servers/sm-edit-server/can-deactive-guard.service';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { GuideComponent } from './shared/guide/guide.component';
+import { TemplateDrivenComponent } from './forms/template-driven/template-driven.component';
+import { MyFormsModule } from 'src/app/forms/forms.module';
 
 // module bundle components, services into one place
 const serverManagerRoutes: Routes = [
   // all top level routes here except children:[] get rendered in app.component router-outlet
   { path: '', component: ServerManagerComponent },
   ///////////// RECIPE BOOK ///////////////////////////
-  { path: 'recipes', component: RecipesComponent, children:
-    [
-      { path: '', component: GuideComponent, data: {message: 'No Recipe Selected!'}},
-      { path: 'add', component: RecipeFormComponent},
-      { path: ':id/edit', component: RecipeFormComponent, data: {isEditMode: true}},
-      { path: ':id', component: RecipeDetailComponent},
-    ]},
+  {
+    path: 'recipes',
+    component: RecipesComponent,
+    children: [
+      {
+        path: '',
+        component: GuideComponent,
+        data: { message: 'No Recipe Selected!' }
+      },
+      { path: 'add', component: RecipeFormComponent },
+      {
+        path: ':id/edit',
+        component: RecipeFormComponent,
+        data: { isEditMode: true }
+      },
+      { path: ':id', component: RecipeDetailComponent }
+    ]
+  },
   { path: 'shopping-list', component: ShoppingListComponent },
 
   ///////////// SERVER MANAGER ///////////////////////////
@@ -59,6 +72,7 @@ const serverManagerRoutes: Routes = [
     children: [{ path: ':id', component: CarDetailComponent }]
   },
   { path: 'login', component: LoginComponent },
+  { path: 'template-driven-form', component: TemplateDrivenComponent },
   // redirect to this url
   { path: 'error', redirectTo: '/some-random-url' },
   // wild card if route not found
@@ -67,6 +81,6 @@ const serverManagerRoutes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(serverManagerRoutes)],
-  exports: [RouterModule]
+  exports: [RouterModule, MyFormsModule]
 })
 export class AppRoutingModule {}
