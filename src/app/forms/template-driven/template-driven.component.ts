@@ -9,6 +9,16 @@ import { NgForm, FormGroup } from '@angular/forms';
 export class TemplateDrivenComponent implements OnInit {
   @ViewChild('f') signUpForm: NgForm;
 
+  userDetails: {
+    user: {
+      username: string;
+      email: string;
+      gender: string;
+    };
+    secretQuestion: string;
+    questionAnswer: string;
+  };
+
   constructor() {}
 
   ngOnInit() {}
@@ -18,7 +28,10 @@ export class TemplateDrivenComponent implements OnInit {
     user.controls['username'].patchValue('abz');
   }
   onSubmitForm(form: NgForm) {
+    this.userDetails = form.value;
+    console.log(this.userDetails);
     console.log(form);
     console.log(this.signUpForm);
+    this.signUpForm.reset();
   }
 }
