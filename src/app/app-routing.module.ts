@@ -1,3 +1,4 @@
+import { ReactiveFormsComponent } from './forms/reactive-forms/reactive-forms.component';
 import { RecipeFormComponent } from './recipes/recipe-form/recipe-form.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { RecipesComponent } from './recipes/recipes.component';
@@ -72,6 +73,7 @@ const serverManagerRoutes: Routes = [
     children: [{ path: ':id', component: CarDetailComponent }]
   },
   { path: 'login', component: LoginComponent },
+  { path: 'reactive-form', component: ReactiveFormsComponent },
   { path: 'template-driven-form', component: TemplateDrivenComponent },
   // redirect to this url
   { path: 'error', redirectTo: '/some-random-url' },
