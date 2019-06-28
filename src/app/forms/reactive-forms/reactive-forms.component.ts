@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -21,8 +22,15 @@ export class ReactiveFormsComponent implements OnInit {
   ngOnInit() {
     this.signupForm = new FormGroup({
       userdata: new FormGroup({
-        username: new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)]),
-        email: new FormControl(null, [Validators.required, Validators.email]),
+        username: new FormControl(null, [
+          Validators.required,
+          this.forbiddenNames.bind(this)
+        ]),
+        email: new FormControl(
+          null,
+          [Validators.required, Validators.email],
+          [this.forbiddenEmails] // async validator
+        ),
         gender: new FormControl('male'),
         hobbies: new FormArray([])
       })
@@ -51,5 +59,18 @@ export class ReactiveFormsComponent implements OnInit {
       return { forbiddenName: true };
     }
     return null;
+  }
+
+  forbiddenEmails(control: FormControl): Promise<any> | Observable<any> {
+    const promise = new Promise<any>((resolve, reject) => {
+      setTimeout(() => {
+        if (control.value === 'test@test.com') {
+          resolve({ forbiddenEmail: true });
+        } else {
+          resolve(null);
+        }
+      }, 1500);
+    });
+    return promise;
   }
 }

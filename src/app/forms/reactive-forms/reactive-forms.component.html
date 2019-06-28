@@ -16,6 +16,8 @@
           <div class="form-group">
             <label for="email">Mail</label>
             <input formControlName="email" type="email" id="email" class="form-control" required email>
+            <span class="help-block"
+            *ngIf="signupForm.get('userdata.email')?.errors?.forbiddenEmail && signupForm.get('userdata.email')?.touched">Email is forbidden</span>
           </div>
           <div class="form-group">
             <input formControlName="gender" type="radio" name="gender" value="male"> Male<br>
