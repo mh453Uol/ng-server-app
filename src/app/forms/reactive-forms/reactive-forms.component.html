@@ -7,8 +7,10 @@
             <label for="username">Username</label>
             <input formControlName="username" type="text" id="username" required class="form-control">
             <span class="help-block"
-              *ngIf="!signupForm.get('userdata.username')?.valid && signupForm.get('userdata.username')?.touched">Email
+              *ngIf="signupForm.get('userdata.username')?.errors?.required && signupForm.get('userdata.username')?.touched">Email
               is required</span>
+              <span class="help-block"
+              *ngIf="signupForm.get('userdata.username')?.errors?.forbiddenName && signupForm.get('userdata.username')?.touched">Username is forbidden</span>
           </div>
           <button class="btn btn-default" type="button">Suggest an Username</button>
           <div class="form-group">
@@ -25,9 +27,9 @@
             <hr>
             <div *ngFor="let hobby of hobbies;let i = index">
               <div class="form-group">
-                  <label for="i">Hobby</label>
-                  <input class="form-control" [formControlName]="i">
-                </div>
+                <label for="i">Hobby</label>
+                <input class="form-control" [formControlName]="i">
+              </div>
             </div>
           </div>
         </div> <button class="btn btn-primary" type="submit">Submit</button>
