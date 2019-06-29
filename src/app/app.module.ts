@@ -11,7 +11,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ServerComponent } from './server/server.component';
 import { ServersComponent } from './servers/servers.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { HeaderComponent } from './header/header.component';
 import { RecipesComponent } from './recipes/recipes.component';
@@ -84,7 +84,7 @@ import { RecipeFormComponent } from './recipes/recipe-form/recipe-form.component
     RecipeFormComponent
   ],
   // add modules to this modules (access functionality)
-  imports: [BrowserModule, AppRoutingModule, FormsModule, PuzzleModule],
+  imports: [ReactiveFormsModule, BrowserModule, AppRoutingModule, FormsModule, PuzzleModule],
   // services I have created
   providers: [LoggingService, AccountService, AuthService, AuthGuard, CanDeactivateGuard],
   bootstrap: [AppComponent]

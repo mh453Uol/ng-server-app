@@ -17,11 +17,23 @@ export class ShoppingListService {
   }
 
   addIngredient(item: Ingredient): any {
-    const ingredientIndex = this.ingredients.findIndex(r => r.name === item.name);
+    const ingredientIndex = this.ingredients.findIndex(
+      r => r.name === item.name
+    );
     if (ingredientIndex === -1) {
       this.ingredients.push(item);
     } else {
       this.ingredients[ingredientIndex].amount += item.amount;
     }
+  }
+
+  removeIngredient(ingredient: Ingredient) {
+    this.ingredients = this.ingredients.filter(i => {
+      return i !== ingredient;
+    });
+  }
+
+  update(index: number, ingredient: Ingredient) {
+    this.ingredients[index] = ingredient;
   }
 }

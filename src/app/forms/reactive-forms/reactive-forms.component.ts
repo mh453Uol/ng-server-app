@@ -35,6 +35,10 @@ export class ReactiveFormsComponent implements OnInit {
         hobbies: new FormArray([])
       })
     });
+
+    this.signupForm.valueChanges.subscribe((d) => {
+      console.log(d);
+    });
   }
 
   onSubmit() {
