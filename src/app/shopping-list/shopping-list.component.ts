@@ -10,7 +10,7 @@ import { Ingredient } from '../shared/models/ingredient.model';
 export class ShoppingListComponent implements OnInit {
   ingredients: Ingredient[];
   isEditingIngredient = false;
-  ingredientEditing: {index: number, ingredient: Ingredient} = null;
+  ingredientEditing: Ingredient;
 
   constructor(private shoppingListService: ShoppingListService) {}
 
@@ -30,13 +30,12 @@ export class ShoppingListComponent implements OnInit {
 
   editIngredient(ingredient: Ingredient) {
     this.isEditingIngredient = true;
-    const index = this.shoppingListService.getShoppingList().indexOf(ingredient);
-    this.ingredientEditing = {index: index, ingredient: ingredient};
+    this.ingredientEditing = ingredient;
   }
 
-  onEditItem(item: {index: number, ingredient: Ingredient}) {
-    console.log('Edited', item);
-    this.shoppingListService.update(item.index, item.ingredient);
+  onEditItem(ingredient: Ingredient) {
+    console.log('Edited', ingredient);
+    this.shoppingListService.update(ingredient);
     this.isEditingIngredient = false;
   }
 }

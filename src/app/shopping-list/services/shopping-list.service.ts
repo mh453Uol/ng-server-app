@@ -33,7 +33,14 @@ export class ShoppingListService {
     });
   }
 
-  update(index: number, ingredient: Ingredient) {
-    this.ingredients[index] = ingredient;
+  update(ingredient: Ingredient) {
+    const found = this.ingredients.find(i => {
+      return i.id === ingredient.id;
+    });
+
+    if (found) {
+      found.name = ingredient.name;
+      found.amount = ingredient.amount;
+    }
   }
 }

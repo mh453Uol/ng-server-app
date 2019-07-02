@@ -24,8 +24,9 @@ import { Ingredient } from 'src/app/shared/models/ingredient.model';
 })
 export class ShoppingListEditComponent implements OnInit, OnChanges {
   shoppingListForm: FormGroup;
+
   @Input() editing = false;
-  @Input() ingredient: {index: number, ingredient: Ingredient};
+  @Input() ingredient: Ingredient;
   @Output() editItem = new EventEmitter();
 
   @Output() addItem = new EventEmitter();
@@ -40,27 +41,20 @@ export class ShoppingListEditComponent implements OnInit, OnChanges {
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['editing'].currentValue) {
-      console.log(changes);
+    if (changes['editing'] && changes['editing'].currentValue) {
       this.editing = true;
       this.ingredient = changes['ingredient'].currentValue;
-      this.shoppingListForm.patchValue(this.ingredient.ingredient);
+      this.shoppingListForm.patchValue(this.ingredient);
     }
   }
 
   onAddIngredient() {
-    const ingredient: {
-      name: string;
-      amount: string;
-    } = this.shoppingListForm.value;
-    console.log(ingredient);
+    const ingredient: { id: number, name: string, amount: string} = this.shoppingListForm.value;
 
     if (this.editing) {
-      const item = {
-        index: this.ingredient.index,
-        ingredient: new Ingredient(ingredient.name, +ingredient.amount))
-      };
-      this.editItem.emit(item);
+      ingredient.id = this.ingredient.id;
+      this.editItem.emit(ingredient);
+      this.editing = false;
     } else {
       this.addItem.emit(new Ingredient(ingredient.name, +ingredient.amount));
     }
