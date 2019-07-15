@@ -57,4 +57,9 @@ export class RecipeService {
     editingRecipe.description = recipe.description;
     editingRecipe.imagePaths = recipe.imagePaths;
   }
+
+  deleteRecipe(id: number) {
+    const index = this.recipes.findIndex(r => r.id === id);
+    this.recipes.splice(index);
+  }
 }
