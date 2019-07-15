@@ -1,6 +1,16 @@
-<app-shopping-list-edit (addItem)="onAddItem($event)"></app-shopping-list-edit>
+<app-shopping-list-edit
+  (addItem)="onAddItem($event)"
+  (editItem)="onEditItem($event)"
+  [editing]="isEditingIngredient"
+  [ingredient]="ingredientEditing">
+</app-shopping-list-edit>
 <hr>
 <ul class="list-group">
-  <a *ngFor="let ingredient of ingredients" class="list-group-item" style="cursor: pointer">{{ingredient.name}}
-    ({{ingredient.amount}})</a>
+  <li
+    *ngFor="let ingredient of ingredients;let i = index"
+    class="list-group-item"
+    style="cursor: pointer"
+    (click)="editIngredient(ingredient)">{{ingredient.name}} ({{ingredient.amount}})
+    <button (click)="removeIngredient(ingredient)" class="btn btn-sm btn-danger pull-right" type="button">X</button>
+  </li>
 </ul>

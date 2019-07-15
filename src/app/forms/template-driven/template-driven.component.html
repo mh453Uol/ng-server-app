@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="onSubmitForm(f)" #f="ngForm">
+        <div id="user-data" ngModelGroup="user">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <!-- [ngModel]="value" set default value -->
+            <input #username="ngModel" [ngModel]="'Username'" name="username" type="text" id="username" required
+              class="form-control">
+            <span class="help-block" *ngIf="username?.errors?.required && username?.touched">Email is required</span>
+          </div>
+          <button
+            (click)="getSuggestedUsername()"
+            class="btn btn-default"
+            type="button">Suggest an Username</button>
+          <div class="form-group">
+            <label for="email">Mail</label>
+            <input ngModel name="email" type="email" id="email" class="form-control" required email>
+          </div>
+          <div class="form-group">
+            <input type="radio" ngModel name="gender"  value="male"> Male<br>
+            <input type="radio" ngModel name="gender" value="female"> Female<br>
+            <input type="radio" ngModel name="gender" value="other"> Other </div>
+        </div>
+        <div>
+          <div class="form-group">
+            <label for="secret">Secret Question</label>
+            <select ngModel name="secret" id="secret" class="form-control">
+              <option value="pet">Your first Pet?</option>
+              <option value="teacher">Your first teacher?</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" #questionAnswer ngModel name="questionAnswer" rows="3"></textarea>
+          </div>
+          <p>Your reply {{questionAnswer?.value}}</p>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <h3>Your Data</h3>
+            <p>Username: {{userDetails?.user?.username}}</p>
+            <p>Mail:{{userDetails?.user?.email}}</p>
+            <p>Gender: {{userDetails?.user?.gender}}</p>
+            <p>Secret: {{userDetails?.secret}}</p>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

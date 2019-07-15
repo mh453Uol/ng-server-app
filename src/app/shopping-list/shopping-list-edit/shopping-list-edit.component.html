@@ -1,22 +1,23 @@
 <div class="row">
   <div class="col-xs-12">
-    <form class="row">
+    <form [formGroup]="shoppingListForm" class="row" (ngSubmit)="onSubmitForm()">
       <div class="col-sm-5 form-group">
         <label for="name">Name</label>
-        <input type="text" id="name" class="form-control" #name>
+        <input formControlName="name" type="text" id="name" class="form-control">
       </div>
       <div class="col-sm-3 form-group">
         <label for="amount">Amount</label>
-        <input type="number" id="amount" class="form-control" #amount>
+        <input formControlName="amount" type="number" id="amount" class="form-control">
       </div>
     </form>
     <div class="row">
-        <div class="col-xs-12 form-group">
-          <button (click)="onAddIngredient(name, amount)" class="btn btn-success" type="submit">Add</button>
-          <button class="btn btn-danger" type="button">Remove</button>
-          <button class="btn btn-warning" type="button">Clear</button>
-        </div>
+      <div class="col-xs-12 form-group">
+        <button [disabled]="shoppingListForm.invalid" (click)="onAddIngredient()" class="btn btn-success" type="submit">
+          <span [hidden]="editing == true">Add</span>
+          <span [hidden]="editing == false">Update</span>
+        </button>
+        <button (click)="clearForm()" class="btn btn-warning" type="button">Clear</button>
       </div>
+    </div>
   </div>
-
 </div>

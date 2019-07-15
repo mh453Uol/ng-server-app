@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div id="user-data" formGroupName="userdata">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input formControlName="username" type="text" id="username" required class="form-control">
+            <span class="help-block"
+              *ngIf="signupForm.get('userdata.username')?.errors?.required && signupForm.get('userdata.username')?.touched">Email
+              is required</span>
+              <span class="help-block"
+              *ngIf="signupForm.get('userdata.username')?.errors?.forbiddenName && signupForm.get('userdata.username')?.touched">Username is forbidden</span>
+          </div>
+          <button class="btn btn-default" type="button">Suggest an Username</button>
+          <div class="form-group">
+            <label for="email">Mail</label>
+            <input formControlName="email" type="email" id="email" class="form-control" required email>
+            <span class="help-block"
+            *ngIf="signupForm.get('userdata.email')?.errors?.forbiddenEmail && signupForm.get('userdata.email')?.touched">Email is forbidden</span>
+          </div>
+          <div class="form-group">
+            <input formControlName="gender" type="radio" name="gender" value="male"> Male<br>
+            <input formControlName="gender" type="radio" name="gender" value="female"> Female<br>
+            <input formControlName="gender" type="radio" name="gender" value="other"> Other </div>
+          <div formArrayName="hobbies">
+            <h4>Your Hobbies</h4>
+            <button type="button" class="btn btn-primary" (click)="onAddHobby()">Add Hobbies</button>
+            <hr>
+            <div *ngFor="let hobby of hobbies;let i = index">
+              <div class="form-group">
+                <label for="i">Hobby</label>
+                <input class="form-control" [formControlName]="i">
+              </div>
+            </div>
+          </div>
+        </div> <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
