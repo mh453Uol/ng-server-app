@@ -6,17 +6,21 @@
     <label for="name">Name</label>
     <input formControlName="name" type="text" class="form-control" id="name" aria-describedby="nameHelp"
       placeholder="Enter Recipe Name i.e Beans on Toast">
-  </div>
+      <div *ngIf="form.get('name')?.errors?.required && form.get('name')?.touched" class="alert alert-info">Name is required</div>
+    </div>
   <div class="form-group">
     <label for="description">Description</label>
-    <input formControlName="description" type="text" class="form-control" id="description" placeholder="Recipe Description">
+    <input formControlName="description" type="text" class="form-control" id="description"
+      placeholder="Recipe Description">
+    <div *ngIf="form.get('description')?.errors?.required && form.get('description')?.touched" class="alert alert-info">Description is required</div>
   </div>
   <div class="form-group">
-      <label for="link-url">Image Url</label>
-      <input formControlName="url" type="text" class="form-control" id="link-url" placeholder="Image Url">
+    <label for="link-url">Image Url</label>
+    <input formControlName="url" type="text" class="form-control" id="link-url" placeholder="Image Url">
+    <div *ngIf="form.get('url')?.errors?.required && form.get('url')?.touched" class="alert alert-info">Images is required</div>
   </div>
 
-  <button *ngIf="!isEditMode" (click)="addNewRecipe()" type="submit" class="btn btn-primary">Submit</button>
-  <button *ngIf="isEditMode" (click)="editRecipe()" type="submit" class="btn btn-primary">Update</button>
+  <button [disabled]="form.invalid" *ngIf="!isEditMode" (click)="addNewRecipe()" type="submit" class="btn btn-primary">Submit</button>
+  <button [disabled]="form.invalid" *ngIf="isEditMode" (click)="editRecipe()" type="submit" class="btn btn-primary">Update</button>
 
 </form>
