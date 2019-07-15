@@ -7,10 +7,10 @@ import { ShoppingListService } from 'src/app/shopping-list/services/shopping-lis
   providedIn: 'root'
 })
 export class RecipeService {
-constructor(private shoppingListService: ShoppingListService) {}
-recipeSelected = new EventEmitter<Recipe>();
+  constructor(private shoppingListService: ShoppingListService) {}
+  recipeSelected = new EventEmitter<Recipe>();
 
-private recipes: Recipe[] = [
+  private recipes: Recipe[] = [
     new Recipe(
       1,
       'Omelet',
@@ -46,7 +46,15 @@ private recipes: Recipe[] = [
       this.shoppingListService.addIngredient(i);
     }
   }
-    addRecipe(recipe: Recipe): any {
-      this.recipes.push(recipe);
-    }
+  addRecipe(recipe: Recipe): any {
+    this.recipes.push(recipe);
+  }
+
+  editRecipe(id: number, recipe: Recipe) {
+    const editingRecipe = this.recipes.find(r => r.id === id);
+
+    editingRecipe.name = recipe.name;
+    editingRecipe.description = recipe.description;
+    editingRecipe.imagePaths = recipe.imagePaths;
+  }
 }
