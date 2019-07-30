@@ -44,6 +44,7 @@ import { CarDetailComponent } from './cars/car-detail/car-detail.component';
 import { GuideComponent } from './shared/guide/guide.component';
 import { RecipeFormComponent } from './recipes/recipe-form/recipe-form.component';
 import { AlertStatusComponent } from './server-manager/alert-status/alert-status.component';
+import { TruncatePipe } from './shared/pipes/truncate.pipe';
 
 @NgModule({
   // my components I have created
@@ -83,7 +84,8 @@ import { AlertStatusComponent } from './server-manager/alert-status/alert-status
     CarDetailComponent,
     GuideComponent,
     RecipeFormComponent,
-    AlertStatusComponent
+    AlertStatusComponent,
+    TruncatePipe
   ],
   // add modules to this modules (access functionality)
   imports: [ReactiveFormsModule, BrowserModule, AppRoutingModule, FormsModule, PuzzleModule],
