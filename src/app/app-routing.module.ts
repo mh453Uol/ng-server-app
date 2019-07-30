@@ -20,6 +20,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { GuideComponent } from './shared/guide/guide.component';
 import { TemplateDrivenComponent } from './forms/template-driven/template-driven.component';
 import { MyFormsModule } from 'src/app/forms/forms.module';
+import { AlertStatusComponent } from './server-manager/alert-status/alert-status.component';
 
 // module bundle components, services into one place
 const serverManagerRoutes: Routes = [
@@ -47,6 +48,10 @@ const serverManagerRoutes: Routes = [
   { path: 'shopping-list', component: ShoppingListComponent },
 
   ///////////// SERVER MANAGER ///////////////////////////
+  {
+    path: 'server-manager/status',
+    component: AlertStatusComponent
+  },
   {
     path: 'server-manager/users',
     canActivateChild: [AuthGuard],
