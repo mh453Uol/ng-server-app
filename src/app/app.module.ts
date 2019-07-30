@@ -45,6 +45,7 @@ import { GuideComponent } from './shared/guide/guide.component';
 import { RecipeFormComponent } from './recipes/recipe-form/recipe-form.component';
 import { AlertStatusComponent } from './server-manager/alert-status/alert-status.component';
 import { TruncatePipe } from './shared/pipes/truncate.pipe';
+import { FilterPipe } from './shared/pipes/filter.pipe';
 
 @NgModule({
   // my components I have created
@@ -85,7 +86,8 @@ import { TruncatePipe } from './shared/pipes/truncate.pipe';
     GuideComponent,
     RecipeFormComponent,
     AlertStatusComponent,
-    TruncatePipe
+    TruncatePipe,
+    FilterPipe
   ],
   // add modules to this modules (access functionality)
   imports: [ReactiveFormsModule, BrowserModule, AppRoutingModule, FormsModule, PuzzleModule],

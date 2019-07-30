@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertStatusComponent implements OnInit {
   servers = [];
+  filteredStatus = '';
 
   constructor() {
     this.servers = [
