@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { reject } from 'q';
 
 @Component({
   selector: 'app-alert-status',
@@ -8,8 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class AlertStatusComponent implements OnInit {
   servers = [];
   filteredStatus = '';
+  appStatus;
 
   constructor() {
+    this.appStatus = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('offline');
+      }, 2000);
+    });
+
     this.servers = [
       {
         instanceType: 'medium',
