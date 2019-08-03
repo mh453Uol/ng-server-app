@@ -25,7 +25,15 @@
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.8.26",
+    "lodash": ">=4.17.13",
+    "lodash.mergewith": ">=4.6.2",
+    "handlebars": ">=4.1.2",
+    "js-yaml": ">=3.13.1",
+    "ws": ">=3.3.1",
+    "fstream": ">=1.0.12",
+    "tar": ">=2.2.2",
+    "adm-zip": ">=0.4.11"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.8",
