@@ -12,18 +12,16 @@ export class ServerService {
   constructor(private http: HttpClient) {}
 
   addServers(servers: ListItem[]) {
-    return this.http.put(this.url, servers)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      );
+    return this.http.put(this.url, servers).pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
   }
 
   getServers(): Observable<ListItem[]> {
-    return this.http.get(this.url)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
+    return this.http.get(this.url).pipe(
+      retry(1),
+      catchError(this.handleError)
     ) as Observable<ListItem[]>;
   }
 
@@ -39,5 +37,4 @@ export class ServerService {
     window.alert(errorMessage);
     return throwError(errorMessage);
   }
- }
 }
