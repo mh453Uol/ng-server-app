@@ -1,3 +1,4 @@
+import { ListComponent } from './list/list.component';
 import { ReactiveFormsComponent } from './forms/reactive-forms/reactive-forms.component';
 import { RecipeFormComponent } from './recipes/recipe-form/recipe-form.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
@@ -72,6 +73,7 @@ const serverManagerRoutes: Routes = [
       }
     ]
   },
+  { path: 'list', component: ListComponent },
   {
     path: 'cars',
     component: CarsComponent,

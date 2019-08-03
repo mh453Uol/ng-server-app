@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="input-group mb-3">
+    <input #server type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <button (click)="onAddItem(server.value)" class="btn btn-outline-secondary" type="button">Add Server</button>
+    </div>
+  </div>
+
+  <button (click)="onSave()" type="button" class="btn btn-primary">Save Servers</button>
+  <button (click)="onGetServers()" type="button" class="btn btn-primary">Refresh</button>
+
+  <ul class="list-group">
+      <li *ngFor="let item of items;trackBy: trackByFn" class="list-group-item">{{item.name }} - {{item.id}}</li>
+    </ul>
+
+</div>

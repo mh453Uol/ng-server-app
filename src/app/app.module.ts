@@ -1,3 +1,4 @@
+import { ServerService } from './list/services/server.service';
 import { CanDeactivateGuard } from './server-manager/sm-servers/sm-edit-server/can-deactive-guard.service';
 import { AuthGuard } from './guards/auth-guard.service';
 import { AuthService } from './auth.service';
@@ -46,6 +47,8 @@ import { RecipeFormComponent } from './recipes/recipe-form/recipe-form.component
 import { AlertStatusComponent } from './server-manager/alert-status/alert-status.component';
 import { TruncatePipe } from './shared/pipes/truncate.pipe';
 import { FilterPipe } from './shared/pipes/filter.pipe';
+import { ListComponent } from './list/list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   // my components I have created
@@ -87,12 +90,27 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
     RecipeFormComponent,
     AlertStatusComponent,
     TruncatePipe,
-    FilterPipe
+    FilterPipe,
+    ListComponent
   ],
   // add modules to this modules (access functionality)
-  imports: [ReactiveFormsModule, BrowserModule, AppRoutingModule, FormsModule, PuzzleModule],
+  imports: [
+    ReactiveFormsModule,
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    PuzzleModule,
+    HttpClientModule
+  ],
   // services I have created
-  providers: [LoggingService, AccountService, AuthService, AuthGuard, CanDeactivateGuard],
+  providers: [
+    LoggingService,
+    AccountService,
+    AuthService,
+    AuthGuard,
+    CanDeactivateGuard,
+    ServerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
